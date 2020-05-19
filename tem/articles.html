@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .header{
+            padding: 10px;
+            background-color: #7FAD39;
+            color: #ffffff;
+
+        }
+        .headerr{
+            padding: 10px;
+            background-color: #ffffff;
+
+        }
+        .con{
+            margin-right: 30%;
+            margin-left: 30%;
+            padding: 10px;
+        }
+        .asa{
+            text-align: center;
+            padding: 20px;
+            margin: 20px;
+            border: #0f6674;
+            border-style: solid;
+            border-radius: 100px;
+        }
+        .link{
+            padding: 15px;
+            border: rgba(24, 26, 29, 0.6);
+            border-top: #7FAD39;
+            border-left: #7FAD39;
+            border-right: #7FAD39;
+            background-color: #7FAD39;
+            border-style: solid;
+            border-radius: 0px 0px 30px 30px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <header class="header">
+
+        <h1 style="text-align: center";>Amin Crockerys</h1>
+
+    </header>
+    <div class="headerr">
+         <a class="link" href="/">GOTO MAIN PAGE</a>
+    </div>
+
+
+ <section class="con">
+
+ {% for dps in articles %}
+
+     <div class="asa">
+
+
+         <img style="width: 250px; height: 250px" src="{{ dps.img.url }}"><br>
+         <a style="text-decoration: none; font-size: 25px" href="#">{{dps.name}}</a>
+         <p>Price :{{dps.res}} Taka</p>
+
+
+
+     </div>
+
+ {% endfor %}
+
+ </section>
+
+</body>
+</html>
+
+

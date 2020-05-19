@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+<body>
+
+
+
+<section class="container-fluid myheader">
+    <div class="row align-items-center">
+        <div class="col-md-12">
+            <p style="float: left;">amincrockerys@gmail.com</p>
+            <a class="btn btn-primary" href="user/login/" role="button">Login</a>
+            <a class="btn btn-primary" href="user/register" role="button">Register</a>
+            <a class="btn btn-primary" href="admin/" role="button">Admin</a>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="view container menus">
+    <div class="row">
+        <div class="col-md-3">
+            <h3 class="logo" style="padding: 10px;">Amin Crockerys</h3>
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab"  href="/" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                <a class="nav-link" id="v-pills-profile-tab"  href="/dinner" role="tab" aria-controls="v-pills-profile" aria-selected="false">ডিনার ছেট</a>
+                <a class="nav-link" id="v-pills-messages-tab"  href="/pressure" role="tab" aria-controls="v-pills-messages" aria-selected="false">প্রেসার কুকার</a>
+                <a class="nav-link" id="v-pills-messages-tab"  href="frypan" role="tab" aria-controls="v-pills-messages" aria-selected="false">ফ্রাইপ্যান</a>
+                <a class="nav-link" id="v-pills-messages-tab"  href="blender" role="tab" aria-controls="v-pills-messages" aria-selected="false">ব্লেন্ডার</a>
+                <a class="nav-link" id="v-pills-messages-tab"  href="rice" role="tab" aria-controls="v-pills-messages" aria-selected="false">রাইস কুকার</a>
+                <a class="nav-link" id="v-pills-messages-tab"  href="pitol" role="tab" aria-controls="v-pills-messages" aria-selected="false">কাশা ও পিতল সামগ্রি</a>
+                <a class="nav-link" id="v-pills-messages-tab"  href="steel" role="tab" aria-controls="v-pills-messages" aria-selected="false">স্টিলের সামগ্রি</a>
+                <a class="nav-link" id="v-pills-settings-tab"  href="glass" role="tab" aria-controls="v-pills-settings" aria-selected="false">কাচের সামগ্রি</a>
+
+              </div>
+        </div>
+       
+
+        <div class="col-md-9">
+            
+            <nav class="navbar">
+                <form action="articles/" method="GET"  class="form-inline">
+                    {% csrf_token %}
+                    <input name="key" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" >
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </nav>
+
+            <div class="banner card bg-dark text-white" style="margin-right: 15px;">
+                <img src="{% static 'images/banner.jpg' %}" class="card-img" alt="...">
+                <div class="oneba card-img-overlay">
+                  <h1 style="opacity: 100%" class="card-title">Amin Crockerys</h1>
+                  <p class="card-text">Doctor Potti, Jhalokathi</p>
+                </div>
+              </div>
+
+        </div>
+
+
+
+    </div>
+
+</section>
+
+<section class="container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <h1 class="ourproducts">Our Products</h1>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="products container">
+    <div class="row">
+        <div class="col-md-12">
+
+            {% for dps in dp %}
+
+                <div class="bboxx">
+                        <div class="cards"  style="background-image: url('{{ dps.img.url }}')">
+
+                        </div>
+
+                        <div class="bodys">
+                            <h6 style="padding-top: 10px">{{dps.name}}</h6>
+                            <p>{{ dps.res }} TAKA</p>
+                            <button type="button" class="btn btn-primary">BUY NOW</button>
+                        </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+<section class="foots container-fluid">
+
+    <div class="row">
+        <div class="col-md-3">
+
+
+
+        </div>
+        <div class="col-md-6">
+
+            <h3>আমিন ক্রোকারিজ</h3>
+            <h6>ডাক্তার পট্টী, ঝালকাঠি</h6>
+            <h5>মোবাঃ ০১৭২৮২৫৩৪০০</h5>
+
+        </div>
+        <div class="col-md-3">
+
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+</body>
+</html>
+

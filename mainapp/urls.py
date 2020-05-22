@@ -1,13 +1,13 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from mainapp import views
 
 urlpatterns = [
-    path('', views.dp, name = 'home'),
-    path('articles/',views.articles,name = 'articles'),
-    path('pitol/',views.pitol,name='pitol'),
-    path('dinner/',views.dinner,name='dinner'),
-    path('steel/',views.steel,name='steel'),
+    path('', views.dp, name='home'),
+    path('articles/', views.articles, name='articles'),
+    path('pitol/', views.pitol, name='pitol'),
+    path('dinner/', views.dinner, name='dinner'),
+    path('steel/', views.steel, name='steel'),
     path('frypan/', views.frypan, name='frypan'),
     path('rice/', views.rice, name='rice'),
     path('pressure/', views.pressure, name='pressure'),
@@ -16,5 +16,6 @@ urlpatterns = [
     path('plastic/', views.plastic, name='plastic'),
     path('alu/', views.alu, name='alu'),
     path('other/', views.other, name='other'),
+    path('details/<id>/', views.details, name='details'),
 
 ]

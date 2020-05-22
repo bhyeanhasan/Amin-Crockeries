@@ -1,19 +1,31 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404, reverse
 from .models import DP
+from django.core.paginator import Paginator
 
 
 # Create your views here.
 
 def dp(request):
-    dps = DP.objects.all
-    return render(request, 'index.html', {'dp': dps})
+    dps = DP.objects.all()
+    paginator = Paginator(dps, 4)
+    page_number = request.GET.get('page')
+    print(page_number)
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'index.html', {'page_obj': page_obj})
+
+
+def details(request,id):
+    data = get_object_or_404(DP, id = id)
+    print(id)
+
+    return render(request, 'details.html', {"datas":data})
 
 
 def articles(request):
     keyword = request.GET.get("key")
-    if len(keyword)>0:
+    if len(keyword) > 0:
         articles = DP.objects.filter(name__contains=keyword)
-        if len(articles)>0:
+        if len(articles) > 0:
             return render(request, "articles.html", {"articles": articles})
         else:
             ob = DP()

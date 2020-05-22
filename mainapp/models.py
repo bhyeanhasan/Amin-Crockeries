@@ -8,4 +8,7 @@ class DP(models.Model):
     res = models.IntegerField()
     tag = models.CharField(max_length=100)
 
+    def get_absolute_url(self):
+        return f"/details/{self.id}/"
+
 

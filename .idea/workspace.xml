@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b91f57d9-c712-4a1c-a5e1-cbe00ef256bb" name="Default Changelist" comment="" />
+    <list default="true" id="b91f57d9-c712-4a1c-a5e1-cbe00ef256bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Django Console" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tem/details.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tem/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tem/product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tem/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1cf1be02-d7e7-4d5c-a6e0-e5b6691bf6e4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1cf1be02-d7e7-4d5c-a6e0-e5b6691bf6e4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f56f1d78-39c3-43f9-81f4-26c663596bdf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f56f1d78-39c3-43f9-81f4-26c663596bdf.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/myproject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/myproject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tem/articles.html" beforeDir="false" afterPath="$PROJECT_DIR$/tem/articles.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tem/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tem/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,23 +39,7 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Django default" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Django default" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Django default" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
@@ -45,22 +49,30 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1c7SX1LpqXYrjyrzuTXsjBhHDle" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/media" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\bhproject\myproject" />
       <recent name="C:\Users\NoYoN\bhproject\myproject\media" />
       <recent name="C:\Users\NoYoN\bhproject\myproject\static\js" />
       <recent name="C:\Users\NoYoN\bhproject\myproject\static\images" />
       <recent name="C:\Users\NoYoN\bhproject\myproject\static\css" />
-      <recent name="C:\Users\NoYoN\bhproject\myproject\static" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -123,10 +135,31 @@
       <updated>1589878174133</updated>
       <workItem from="1589878175542" duration="5712000" />
       <workItem from="1589883930667" duration="17049000" />
+      <workItem from="1589902951830" duration="1023000" />
+      <workItem from="1589946321420" duration="7036000" />
+      <workItem from="1590059765627" duration="494000" />
+      <workItem from="1590060481012" duration="115000" />
+      <workItem from="1590060809993" duration="1279000" />
+      <workItem from="1590062739125" duration="669000" />
+      <workItem from="1590067699356" duration="13615000" />
+      <workItem from="1590118648968" duration="8513000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

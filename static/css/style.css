@@ -33,6 +33,10 @@ body{
 .nav{
     background-color: #963694;
     padding: 20px;
+    font-family: "Siyam Rupali";
+    font-size: 17.5px;
+    border: #5a6268;
+    border-radius: 20px;
 }
 
 .nav a{
@@ -41,6 +45,7 @@ body{
 .nav a:hover{
     color: #ff7928;
     background-color: #4e555b;
+
 }
 
 
@@ -70,6 +75,7 @@ body{
     border: #FF6801;
     border-style: solid;
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 .banner{
@@ -78,10 +84,11 @@ body{
 }
 
 .foots{
-    padding: 10px;
+    padding: 20px;
     background-color:#963694;
     text-align: center;
     color: #ffffff;
+    font-family: "Siyam Rupali";
 
 }
 
@@ -95,6 +102,8 @@ body{
   -o-background-size: cover;
   background-size: cover;
 }
+
+
 
 
 .bodys{
@@ -143,4 +152,26 @@ body{
     border-style: solid;
     border-radius: 30px;
     padding: 20px;
+}
+.pago a{
+
+    color: #1c7430;
+
+}
+.pago {
+
+    margin-top: 20px;
+
+}
+.bboxxx{
+
+    text-align: center;
+
+}
+
+.bboxxx img{
+
+    height: 400px;
+    width: 400px;
+
 }

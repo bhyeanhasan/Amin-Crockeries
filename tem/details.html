@@ -28,26 +28,36 @@
 
 <section style="margin-top: 35px" class="products container">
     <div class="row">
-        <div class="col-md-12">
 
-            {% for dps in articles %}
+        <div class="col-md-2">
 
-                <div class="bboxx">
-                        <div class="cards"  style="background-image: url('{{ dps.img.url }}')">
+        </div>
+        <div class="col-md-8">
 
-                        </div>
 
-                        <div class="bodys">
-                            <h6 style="padding-top: 10px">{{dps.name}}</h6>
-                            <p>{{ dps.res }} TAKA</p>
-                            <button type="button" class="btn btn-primary">Details</button>
-                        </div>
+
+                <div class="bboxxx">
+
+
+                        <img src="{{ datas.img.url }}">
+                        <h6 style="padding-top: 10px">{{datas.name}}</h6>
+                        <p>{{ datas.res }} TAKA</p>
+                        <p>{{ datas.tag }}</p>
+
+                        <button type="button" class="btn btn-primary">ADD TO CART</button>
+
                 </div>
 
-            {% endfor %}
+
+
+        </div>
+
+        <div class="col-md-2">
 
         </div>
     </div>
+
+
 </section>
 
 

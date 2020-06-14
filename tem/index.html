@@ -14,19 +14,20 @@
 
 <section class="container-fluid myheader">
     <div class="row align-items-center">
-        <div class="col-md-12">
-            <p style="float: left;">amincrockerys@gmail.com</p>
-            <a class="btn btn-primary" href="admin/" role="button">Admin</a>
+        <div class="topbtn col-md-6">
+            <p class="email" style="float: left;">amincrockerys@gmail.com</p>
+        </div>
+        <div class="topok col-md-6">
+            <a class=" btn btn-primary" href="admin/" role="button">Admin</a>
             {% if user.is_authenticated %}
 
                 <a class="btn btn-primary" href="user/logout" role="button">Logout</a>
-                <a class="btn btn-primary" href="user/profile" role="button">Profile</a>
-                <a style="padding-top: 7px">{{ user.username }}</a>
+                <a class="btn btn-primary" href="user/profile" role="button">{{ user.username }}</a>
             {% else %}
                 <a class="btn btn-primary" href="user/login" role="button">Login</a>
                 <a class="btn btn-primary" href="user/register" role="button">Register</a>
             {% endif %}
-
+        </div>
 
         </div>
     </div>

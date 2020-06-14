@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 
 def dp(request):
     dps = DP.objects.all()
-    paginator = Paginator(dps, 4)
+    paginator = Paginator(dps, 12)
     page_number = request.GET.get('page')
     print(page_number)
     page_obj = paginator.get_page(page_number)

@@ -2,23 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b91f57d9-c712-4a1c-a5e1-cbe00ef256bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django Console" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tem/details.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tem/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tem/product.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tem/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1cf1be02-d7e7-4d5c-a6e0-e5b6691bf6e4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1cf1be02-d7e7-4d5c-a6e0-e5b6691bf6e4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f56f1d78-39c3-43f9-81f4-26c663596bdf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f56f1d78-39c3-43f9-81f4-26c663596bdf.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/myproject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/myproject.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tem/updateprofile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tem/articles.html" beforeDir="false" afterPath="$PROJECT_DIR$/tem/articles.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tem/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tem/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tem/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/tem/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
@@ -143,6 +136,10 @@
       <workItem from="1590062739125" duration="669000" />
       <workItem from="1590067699356" duration="13615000" />
       <workItem from="1590118648968" duration="8513000" />
+      <workItem from="1590221987419" duration="1468000" />
+      <workItem from="1590232371503" duration="6735000" />
+      <workItem from="1590498616737" duration="12121000" />
+      <workItem from="1590839261057" duration="58000" />
     </task>
     <servers />
   </component>

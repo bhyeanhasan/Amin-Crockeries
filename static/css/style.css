@@ -128,16 +128,21 @@ body{
 .oneba{
     opacity: .8;
     padding-top: 20px;
-    width: 400px;
-    margin: auto;
+    width: 300px;
     color: #ff9e2a;
+    margin: auto;
+    height: 200px;
     text-align: center;
-    height: 150px;
     border: #ff9e2a;
     border-style: solid;
     border-radius: 30px;
     background-color: #4e555b;
 }
+
+
+
+
+
 
 .form-control{
     margin: 10px;
@@ -173,5 +178,32 @@ body{
 
     height: 400px;
     width: 400px;
+}
 
+.topbtn p{
+
+    padding-top: 15px;
+
+}
+
+.topok a{
+    float: right;
+    margin: 10px;
+}
+
+@media screen and (max-width: 1060px) {
+    .oneba { width:100%; }
+    .bboxx { width: 95% }
+    .navbar { float: left }
+    .navbar .btn{ margin-left: 37% }
+    .navbar .form-control{width: 100%}
+    .email { width: 100%; clear: both; text-align: center }
+    .banner { width: 100% }
+    .bboxxx img {width: 100%}
+    .topok a { width: 20% }
+}
+
+.userok{
+
+    margin-top: 200px;
 }

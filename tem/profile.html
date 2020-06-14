@@ -10,9 +10,9 @@
 </head>
 <body>
 
-<section class="container-fluid myheader">
+<section style="margin-bottom: 50px" class="container-fluid myheader">
     <div class="row align-items-center">
-        <div class="col-md-12">
+        <div  class="col-md-12">
             <p style="float: left;">amincrockerys@gmail.com</p>
             <a class="btn btn-primary" href="/" role="button">Go To Home</a>
 
@@ -22,21 +22,27 @@
 
 <section class="container">
     <div class="row align-content-center">
-        <div class="col-md-3">
+
+        <div class="col-md">
         </div>
 
-        <div class="col-md-6">
-            <h1>{{ user.username }}</h1>
-<h1>{{ user.first_name }}</h1>
-<h1>{{ user.last_name }}</h1>
-<h1>{{ user.email }}</h1>
+        <div class="card col-md-8">
 
 
+
+
+
+            <div class="card-body" >
+                <a style="width: 30%; float: right" class="btn btn-primary" href="updateprofile" role="button">Update</a>
+
+                <h6 style="color: #31e126;font-size: 20px" class="card-body"><strong style="color: black;font-size: 16px">User Name : </strong>{{ user.username }}</h6>
+                <h6 class=" card-body"><strong>Name : </strong>{{ user.first_name }} {{ user.last_name }}</h6>
+                <h6 class=" card-body"><strong>Email : </strong>{{ user.email }}</h6>
+            </div>
         </div>
 
 
-        <div class="col-md-3">
-
+        <div class="col-md">
         </div>
 
     </div>

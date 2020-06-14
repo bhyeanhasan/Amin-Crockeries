@@ -27,18 +27,15 @@
         </div>
 
         <div class="card col-md-8">
-
-
-
-
-
+            
             <div class="card-body" >
                 <a style="width: 30%; float: right" class="btn btn-primary" href="updateprofile" role="button">Update</a>
-
+                <img class="rounded-circle " style="width: 200px;height: 200px" src="{{ user.profile.image.url }}">
                 <h6 style="color: #31e126;font-size: 20px" class="card-body"><strong style="color: black;font-size: 16px">User Name : </strong>{{ user.username }}</h6>
                 <h6 class=" card-body"><strong>Name : </strong>{{ user.first_name }} {{ user.last_name }}</h6>
                 <h6 class=" card-body"><strong>Email : </strong>{{ user.email }}</h6>
             </div>
+            
         </div>
 
 

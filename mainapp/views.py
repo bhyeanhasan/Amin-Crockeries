@@ -17,7 +17,6 @@ def dp(request):
 def details(request,id):
     data = get_object_or_404(DP, id = id)
     print(id)
-
     return render(request, 'details.html', {"datas":data})
 
 

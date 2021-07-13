@@ -5,34 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Amin Crockerys</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 </head>
 <body>
 
 
-
 <section class="container-fluid myheader">
     <div class="row align-items-center">
-        <div class="topbtn col-md-6">
-            <p class="email" style="float: left;">amincrockerys@gmail.com</p>
-        </div>
+
         <div class="topok col-md-6">
             <a class=" btn btn-primary" href="admin/" role="button">Admin</a>
+            <a class=" btn btn-primary" href={% url 'newTem' %} role="button">newTem</a>
             {% if user.is_authenticated %}
 
                 <a class="btn btn-primary" href="user/logout" role="button">Logout</a>
-                <a class="btn btn-primary" href="user/profile" role="button">{{ user.username }}</a>
+                <a class="btn btn-primary" href={% url 'profile' %} role="button">{{ user.username }}</a>
             {% else %}
                 <a class="btn btn-primary" href="user/login" role="button">Login</a>
                 <a class="btn btn-primary" href="user/register" role="button">Register</a>
             {% endif %}
         </div>
 
-        </div>
+    </div>
     </div>
 </section>
-
 
 
 <section class="view container menus">
@@ -40,40 +35,41 @@
         <div class="col-md-3">
             <h3 class="logo" style="padding: 10px;">Amin Crockerys</h3>
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="v-pills-home-tab"  href="/" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-                <a class="nav-link" id="v-pills-profile-tab"  href="/dinner" role="tab" aria-controls="v-pills-profile" aria-selected="false">ডিনার ছেট</a>
-                <a class="nav-link" id="v-pills-messages-tab"  href="/pressure" role="tab" aria-controls="v-pills-messages" aria-selected="false">প্রেসার কুকার</a>
-                <a class="nav-link" id="v-pills-messages-tab"  href="frypan" role="tab" aria-controls="v-pills-messages" aria-selected="false">ফ্রাইপ্যান</a>
-                <a class="nav-link" id="v-pills-messages-tab"  href="blender" role="tab" aria-controls="v-pills-messages" aria-selected="false">ব্লেন্ডার</a>
-                <a class="nav-link" id="v-pills-messages-tab"  href="rice" role="tab" aria-controls="v-pills-messages" aria-selected="false">রাইস কুকার</a>
-                <a class="nav-link" id="v-pills-messages-tab"  href="pitol" role="tab" aria-controls="v-pills-messages" aria-selected="false">কাশা ও পিতল সামগ্রি</a>
-                <a class="nav-link" id="v-pills-messages-tab"  href="steel" role="tab" aria-controls="v-pills-messages" aria-selected="false">স্টিলের সামগ্রি</a>
-                <a class="nav-link" id="v-pills-settings-tab"  href="glass" role="tab" aria-controls="v-pills-settings" aria-selected="false">কাচের সামগ্রি</a>
+                <a class="nav-link active" id="v-pills-home-tab" href="/" role="tab" aria-controls="v-pills-home"
+                   aria-selected="true">Home</a>
+                <a class="nav-link" id="v-pills-profile-tab" href="/dinner" role="tab" aria-controls="v-pills-profile"
+                   aria-selected="false">ডিনার ছেট</a>
+                <a class="nav-link" id="v-pills-messages-tab" href="/pressure" role="tab"
+                   aria-controls="v-pills-messages" aria-selected="false">প্রেসার কুকার</a>
+                <a class="nav-link" id="v-pills-messages-tab" href="frypan" role="tab" aria-controls="v-pills-messages"
+                   aria-selected="false">ফ্রাইপ্যান</a>
+                <a class="nav-link" id="v-pills-messages-tab" href="blender" role="tab" aria-controls="v-pills-messages"
+                   aria-selected="false">ব্লেন্ডার</a>
+                <a class="nav-link" id="v-pills-messages-tab" href="rice" role="tab" aria-controls="v-pills-messages"
+                   aria-selected="false">রাইস কুকার</a>
+                <a class="nav-link" id="v-pills-messages-tab" href="pitol" role="tab" aria-controls="v-pills-messages"
+                   aria-selected="false">কাশা ও পিতল সামগ্রি</a>
+                <a class="nav-link" id="v-pills-messages-tab" href="steel" role="tab" aria-controls="v-pills-messages"
+                   aria-selected="false">স্টিলের সামগ্রি</a>
+                <a class="nav-link" id="v-pills-settings-tab" href="glass" role="tab" aria-controls="v-pills-settings"
+                   aria-selected="false">কাচের সামগ্রি</a>
 
-              </div>
+            </div>
         </div>
-       
+
 
         <div class="col-md-9">
-            
+
             <nav class="navbar">
-                <form action="articles/" method="GET"  class="form-inline">
+                <form action="articles/" method="GET" class="form-inline">
                     {% csrf_token %}
-                    <input name="key" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" >
+                    <input name="key" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
-              </nav>
+            </nav>
 
-            <div class="banner card bg-dark text-white" style="margin-right: 15px;">
-                <img src="{% static 'images/banner.jpg' %}" class="card-img" alt="...">
-                <div class="oneba card-img-overlay">
-                  <h1 style="opacity: 100%" class="card-title">Amin Crockerys</h1>
-                  <p class="card-text">Doctor Potti, Jhalokathi</p>
-                </div>
-              </div>
 
         </div>
-
 
 
     </div>
@@ -101,15 +97,15 @@
             {% for dps in page_obj %}
 
                 <div class="bboxx">
-                        <div class="cards"  style="background-image: url('{{ dps.img.url }}')">
+                    <div class="cards" style="background-image: url('{{ dps.img.url }}')">
 
-                        </div>
+                    </div>
 
-                        <div class="bodys">
-                            <h6 style="padding-top: 10px">{{dps.name}}</h6>
-                            <p>{{ dps.res }} TAKA</p>
-                            <a type="button" href="{{ dps.get_absolute_url }}" class="btn btn-primary">Details</a>
-                        </div>
+                    <div class="bodys">
+                        <h6 style="padding-top: 10px">{{ dps.name }}</h6>
+                        <p>{{ dps.res }} TAKA</p>
+                        <a type="button" href="{{ dps.get_absolute_url }}" class="btn btn-primary">Details</a>
+                    </div>
                 </div>
 
             {% endfor %}
@@ -119,7 +115,6 @@
 </section>
 
 
-
 <section class="container-fluid">
 
     <div class="row align-items-center">
@@ -127,58 +122,20 @@
         <div class="col-md-12">
 
 
-                                <div  class="pago d-flex justify-content-center">
+            <div class="pago d-flex justify-content-center">
 
-                                    {% if page_obj.has_previous %}
-                                    <a class="btn btn-primary" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-                                    {% endif %}
+                {% if page_obj.has_previous %}
+                    <a class="btn btn-primary" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
 
-                                    <a style="margin-right: 10px;margin-left: 10px;margin-top: 10px" >Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</a>
+                <a style="margin-right: 10px;margin-left: 10px;margin-top: 10px">Page {{ page_obj.number }}
+                    of {{ page_obj.paginator.num_pages }}</a>
 
-                                    {% if page_obj.has_next %}
-                                        <a class="btn btn-primary"  href="?page={{ page_obj.next_page_number }}">Next</a>
-                                    {% endif %}
+                {% if page_obj.has_next %}
+                    <a class="btn btn-primary" href="?page={{ page_obj.next_page_number }}">Next</a>
+                {% endif %}
 
-                                </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-
-<section class="container-fluid">
-
-    <div style="height: 30px; background-color: rgba(150,54,148,0.86);margin-top: 10px" class="row align-items-center">
-
-        <div class="col-md-12">
-        </div>
-    </div>
-</section>
-
-
-
-<section class="foots container-fluid">
-
-    <div class="row">
-        <div class="col-md-3">
-
-
-
-        </div>
-        <div class="col-md-6">
-
-            <h3>আমিন ক্রোকারিজ</h3>
-            <h6>ডাক্তার পট্টী, ঝালকাঠি</h6>
-            <h6>মোবাঃ ০১৭২৮২৫৩৪০০</h6>
-
-        </div>
-        <div class="col-md-3">
-
+            </div>
 
 
         </div>

@@ -1,24 +1,28 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404, reverse
 from .models import Product
 from .models import Card
+from .models import Wishlist
 from django.core.paginator import Paginator
 
 
 # Create your views here.
 
+
+
 def product_list(request):
+    category = (
+        ('pitol', 'Pitol'),
+        ('dinner', 'Dinner Set'),
+        ('plastic', 'Plastic'),
+        ('cooker', 'Cooker'),
+    )
+    # for rendering all products
     products = Product.objects.all()
     paginator = Paginator(products, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'index.html', {'page_obj': page_obj})
 
-
-def newTem(request):
-    products = Product.objects.all()
-    paginator = Paginator(products, 12)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    # for managing card and total calculation
     card = []
     cardCount = 0
     cardTotal = 0
@@ -28,15 +32,15 @@ def newTem(request):
             cardCount += 1
             cardTotal += crd.amount
 
+
     return render(request, 'newTem.html',
-                  {'page_obj': page_obj, 'card': card, 'cardCount': cardCount, 'cardTotal': cardTotal})
+                  {'page_obj': page_obj, 'card': card, 'cardCount': cardCount, 'cardTotal': cardTotal,'category':category})
 
 
 def details(request, id):
     data = get_object_or_404(Product, id=id)
     print(id)
     return render(request, 'details.html', {"datas": data})
-
 
 
 def addToCard(request, id):
@@ -46,14 +50,14 @@ def addToCard(request, id):
         price = product.res
         quantity = 1
 
-
         card = Card.objects.filter(customer=request.user)
 
-        if Card.objects.filter(product = product ,customer = user).exists():
+        if Card.objects.filter(product=product, customer=user).exists():
             for crd in card:
-                if(crd.product == product):
-                    quantity = crd.quantity+1
-                    Card.objects.filter(product=product, customer=user).update(quantity=quantity,amount=price*quantity)
+                if (crd.product == product):
+                    quantity = crd.quantity + 1
+                    Card.objects.filter(product=product, customer=user).update(quantity=quantity,
+                                                                               amount=price * quantity)
         else:
             card = Card(product=product, customer=user, quantity=quantity, amount=price * quantity)
             card.save()
@@ -64,79 +68,56 @@ def addToCard(request, id):
         return redirect('login')
 
 
+def addToWish(request, id):
+    if request.user.is_authenticated:
+        product = get_object_or_404(Product, id=id)
+        user = request.user
 
-def articles(request):
-    keyword = request.GET.get("key")
-    if len(keyword) > 0:
-        articles = Product.objects.filter(name__contains=keyword)
-        if len(articles) > 0:
-            return render(request, "articles.html", {"articles": articles})
+        if Wishlist.objects.filter(product=product, customer=user).exists():
+            print('already added')
         else:
-            ob = Product()
-            ob.name = 'not found'
-            ob.img = 'asa.jpg'
-            ob.res = 00
-            articles = [ob]
-            return render(request, "articles.html", {"articles": articles})
+            wishlist = Wishlist(product=product, customer=user)
+            wishlist.save()
+
+        return redirect('/')
+
     else:
-        ob = Product()
-        ob.name = 'No Product Found'
-        ob.img = 'asa.jpeg'
-        ob.res = 000
-        articles = [ob]
-        return render(request, "articles.html", {"articles": articles})
+        return redirect('login')
 
 
-def pitol(request):
-    articles = Product.objects.filter(tag__contains='pitol')
-    return render(request, "articles.html", {"articles": articles})
+def showWish(request):
+    if request.user.is_authenticated:
+        wishlist = Wishlist.objects.filter(customer=request.user)
+        return render(request, 'wishlist.html', {'wishlist': wishlist})
+    else:
+        return redirect('login')
 
 
-def dinner(request):
-    articles = Product.objects.filter(tag__contains='dinner')
-    return render(request, "articles.html", {"articles": articles})
+def search_result(request):
+    keyword = request.GET.get("search")
+    if len(keyword) > 0:
+        searching_result = Product.objects.filter(name__contains=keyword)
+        if len(searching_result) > 0:
+            return render(request, "articles.html", {"articles": searching_result})
+        else:
+            errors =["Product not Found","Invalid Keyword"]
+            return render(request, "errorpage.html", {"errors": errors})
+    else:
+        return redirect('/')
+
+def category(request,tag):
+    product = Product.objects.filter(tag =tag)
+    if len(product)>0:
+        return render(request, "articles.html", {"articles": product})
+    else:
+        errors = ["Product not Available","Thanks for your interest","Stock will available soon"]
+        return render(request,'errorpage.html',{'errors':errors})
 
 
-def frypan(request):
-    articles = Product.objects.filter(tag__contains='frypan')
-    return render(request, "articles.html", {"articles": articles})
 
 
-def steel(request):
-    articles = Product.objects.filter(tag__contains='steel')
-    return render(request, "articles.html", {"articles": articles})
 
 
-def rice(request):
-    articles = Product.objects.filter(tag__contains='rice')
-    return render(request, "articles.html", {"articles": articles})
 
 
-def pressure(request):
-    articles = Product.objects.filter(tag__contains='pressure')
-    return render(request, "articles.html", {"articles": articles})
 
-
-def blender(request):
-    articles = Product.objects.filter(tag__contains='blender')
-    return render(request, "articles.html", {"articles": articles})
-
-
-def glass(request):
-    articles = Product.objects.filter(tag__contains='glass')
-    return render(request, "articles.html", {"articles": articles})
-
-
-def plastic(request):
-    articles = Product.objects.filter(tag__contains='plastic')
-    return render(request, "articles.html", {"articles": articles})
-
-
-def alu(request):
-    articles = Product.objects.filter(tag__contains='alu')
-    return render(request, "articles.html", {"articles": articles})
-
-
-def other(request):
-    articles = Product.objects.filter(tag__contains='other')
-    return render(request, "articles.html", {"articles": articles})

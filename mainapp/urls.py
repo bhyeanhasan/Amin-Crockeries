@@ -5,19 +5,9 @@ from mainapp import views
 urlpatterns = [
     path('', views.product_list, name='home'),
     path('details/<id>/', views.details, name='details'),
+    path('category/<tag>/', views.category, name='category'),
     path('addtocard/<id>/', views.addToCard, name='addToCard'),
-    path('newTEm/', views.newTem, name='newTem'),
-    path('articles/', views.articles, name='articles'),
-    path('pitol/', views.pitol, name='pitol'),
-    path('dinner/', views.dinner, name='dinner'),
-    path('steel/', views.steel, name='steel'),
-    path('frypan/', views.frypan, name='frypan'),
-    path('rice/', views.rice, name='rice'),
-    path('pressure/', views.pressure, name='pressure'),
-    path('blender/', views.blender, name='blender'),
-    path('glass/', views.glass, name='glass'),
-    path('plastic/', views.plastic, name='plastic'),
-    path('alu/', views.alu, name='alu'),
-    path('other/', views.other, name='other'),
-
+    path('addtowish/<id>/', views.addToWish, name='addToWish'),
+    path('showWish/', views.showWish, name='showWish'),
+    path('search_result/', views.search_result, name='search_result'),
 ]

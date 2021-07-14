@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wish List</title>
+</head>
+<body>
+    {% for wish in wishlist %}
+        <p>{{ wish.product.name }}</p>
+        <p>{{ wish.product.res }}</p>
+    {% endfor %}
+
+</body>
+</html>

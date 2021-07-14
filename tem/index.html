@@ -61,9 +61,9 @@
         <div class="col-md-9">
 
             <nav class="navbar">
-                <form action="articles/" method="GET" class="form-inline">
+                <form action="search_result/" method="GET" class="form-inline">
                     {% csrf_token %}
-                    <input name="key" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <input name="search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </nav>

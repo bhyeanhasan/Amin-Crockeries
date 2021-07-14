@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth, User
+from .models import Profile
 from django.contrib import messages
 
 
@@ -54,7 +55,10 @@ def logout(request):
 
 
 def profile(request):
-    return render(request, 'profile.html')
+
+    profile = Profile.objects.filter(user=request.user)
+
+    return render(request, 'profile.html',{'profile':profile})
 
 
 def product(request):

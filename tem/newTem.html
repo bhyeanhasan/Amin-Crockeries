@@ -79,6 +79,10 @@
 				</div>
 			</div>
 		</div>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 		<!-- End Topbar -->
 		<div class="middle-inner">
 			<div class="container">
@@ -124,6 +128,7 @@
 							<div class="sinlge-bar">
 								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 							</div>
+<<<<<<< Updated upstream
 							<div class="sinlge-bar shopping">
 								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
 								<!-- Shopping Item -->
@@ -145,11 +150,40 @@
 											<h4><a href="#">Woman Necklace</a></h4>
 											<p class="quantity">1x - <span class="amount">$35.00</span></p>
 										</li>
+=======
+
+							<div class="sinlge-bar shopping">
+								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{ cardCount }}</span></a>
+								<!-- Shopping Item -->
+								<div class="shopping-item">
+									<div class="dropdown-cart-header">
+										<span>{{ cardCount }} Items</span>
+										<a href="#">View Cart</a>
+									</div>
+									<ul class="shopping-list">
+
+                                        {% for mycard in card %}
+                                            <li>
+                                                <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
+                                                <a class="cart-img" href="#"><img src="{{ mycard.product.img.url }}" alt="#"></a>
+                                                <h4><a href="#">{{ mycard.product.name }}</a></h4>
+                                                <p class="quantity">{{ mycard.quantity }}x - <span class="amount">{{ mycard.product.res }}</span></p>
+										    </li>
+                                        {% endfor %}
+
+
+
+>>>>>>> Stashed changes
 									</ul>
 									<div class="bottom">
 										<div class="total">
 											<span>Total</span>
+<<<<<<< Updated upstream
 											<span class="total-amount">$134.00</span>
+=======
+
+											<span class="total-amount">{{ cardTotal }}</span>
+>>>>>>> Stashed changes
 										</div>
 										<a href="checkout.html" class="btn animate">Checkout</a>
 									</div>
@@ -317,6 +351,10 @@
 					</div>
 				</div>
 				<!-- /End Single Banner  -->
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 				<!-- Single Banner  -->
 				<div class="col-lg-4 col-md-6 col-12">
 					<div class="single-banner">
@@ -370,9 +408,19 @@
 									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#accessories" role="tab">Accessories</a></li>
 									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#essential" role="tab">Essential</a></li>
 									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#prices" role="tab">Prices</a></li>
+<<<<<<< Updated upstream
 								</ul>
 								<!--/ End Tab Nav -->
 							</div>
+=======
+
+
+								</ul>
+								<!--/ End Tab Nav -->
+							</div>
+
+
+>>>>>>> Stashed changes
 							<div class="tab-content" id="myTabContent">
 								<!-- Start Single Tab -->
 								<div class="tab-pane fade show active" id="man" role="tabpanel">

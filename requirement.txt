@@ -1,4 +1,20 @@
+<<<<<<< Updated upstream
 Django==3.0.6
 Pillow==7.1.2
 pytz==2020.1
 sqlparse==0.3.1
+=======
+appdirs==1.4.4
+asgiref==3.4.1
+distlib==0.3.2
+Django==3.2.5
+filelock==3.0.12
+importlib-metadata==4.6.1
+Pillow==8.3.1
+pytz==2021.1
+six==1.16.0
+sqlparse==0.4.1
+typing-extensions==3.10.0.0
+virtualenv==20.4.7
+zipp==3.5.0
+>>>>>>> Stashed changes

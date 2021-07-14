@@ -9,6 +9,7 @@ from django.core.paginator import Paginator
 def product_list(request):
     products = Product.objects.all()
     paginator = Paginator(products, 12)
+<<<<<<< Updated upstream
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'index.html', {'page_obj': page_obj})
@@ -17,18 +18,41 @@ def product_list(request):
 def newTem(request):
     dps = Product.objects.all()
     paginator = Paginator(dps, 12)
+=======
+>>>>>>> Stashed changes
     page_number = request.GET.get('page')
-    print(page_number)
     page_obj = paginator.get_page(page_number)
     return render(request, 'newTem.html', {'page_obj': page_obj})
 
 
+<<<<<<< Updated upstream
+=======
+def newTem(request):
+    products = Product.objects.all()
+    paginator = Paginator(products, 12)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    card = []
+    cardCount = 0
+    cardTotal = 0
+    if request.user.is_authenticated:
+        card = Card.objects.filter(customer=request.user)
+        for crd in card:
+            cardCount += 1
+            cardTotal += crd.amount
+
+    return render(request, 'newTem.html',
+                  {'page_obj': page_obj, 'card': card, 'cardCount': cardCount, 'cardTotal': cardTotal})
+
+
+>>>>>>> Stashed changes
 def details(request, id):
     data = get_object_or_404(Product, id=id)
     print(id)
     return render(request, 'details.html', {"datas": data})
 
 
+<<<<<<< Updated upstream
 def addToCard(request,id):
     if request.user.is_authenticated:
         product = get_object_or_404(Product,id=id)
@@ -43,6 +67,31 @@ def addToCard(request,id):
     else:
         return render(request, 'login.html')
 
+=======
+def addToCard(request, id):
+    if request.user.is_authenticated:
+        product = get_object_or_404(Product, id=id)
+        user = request.user
+        price = product.res
+        quantity = 1
+
+
+        card = Card.objects.filter(customer=request.user)
+
+        if Card.objects.filter(product = product ,customer = user).exists():
+            for crd in card:
+                if(crd.product == product):
+                    quantity = crd.quantity+1
+                    Card.objects.filter(product=product, customer=user).update(quantity=quantity,amount=price*quantity)
+        else:
+            card = Card(product=product, customer=user, quantity=quantity, amount=price * quantity)
+            card.save()
+
+        return redirect('/')
+
+    else:
+        return redirect('login')
+>>>>>>> Stashed changes
 
 
 def articles(request):

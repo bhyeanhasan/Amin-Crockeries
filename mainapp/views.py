@@ -9,31 +9,12 @@ from django.core.paginator import Paginator
 def product_list(request):
     products = Product.objects.all()
     paginator = Paginator(products, 12)
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'index.html', {'page_obj': page_obj})
 
 
 def newTem(request):
-<<<<<<< Updated upstream
-    dps = Product.objects.all()
-    paginator = Paginator(dps, 12)
-=======
->>>>>>> Stashed changes
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'newTem.html', {'page_obj': page_obj})
-
-
-<<<<<<< Updated upstream
-=======
-def newTem(request):
-=======
->>>>>>> Stashed changes
     products = Product.objects.all()
     paginator = Paginator(products, 12)
     page_number = request.GET.get('page')
@@ -51,35 +32,13 @@ def newTem(request):
                   {'page_obj': page_obj, 'card': card, 'cardCount': cardCount, 'cardTotal': cardTotal})
 
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 def details(request, id):
     data = get_object_or_404(Product, id=id)
     print(id)
     return render(request, 'details.html', {"datas": data})
 
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-def addToCard(request,id):
-    if request.user.is_authenticated:
-        product = get_object_or_404(Product,id=id)
-        user = request.user
-        price = product.res
-        quantity = 1
-        card = Card(product = product, customer=user, quantity=quantity,amount = price*quantity)
-        card.save()
-        res = redirect('/')
 
-        return res
-    else:
-        return render(request, 'login.html')
-
-=======
-=======
->>>>>>> Stashed changes
 def addToCard(request, id):
     if request.user.is_authenticated:
         product = get_object_or_404(Product, id=id)
@@ -103,10 +62,7 @@ def addToCard(request, id):
 
     else:
         return redirect('login')
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
 
 
 def articles(request):

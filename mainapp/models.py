@@ -15,27 +15,12 @@ class Product(models.Model):
     @property
     def addtocard(self):
         return f"/addtocard/{self.id}/"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
+
 
 
 class Card(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
-<<<<<<< Updated upstream
-    quantity = models.IntegerField(default=0)
-    amount = models.IntegerField()
-=======
->>>>>>> Stashed changes
-
-
-class Card(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    customer = models.ForeignKey(User, on_delete=models.CASCADE)
-=======
->>>>>>> Stashed changes
     quantity = models.IntegerField(default=1)
     amount = models.IntegerField()
 

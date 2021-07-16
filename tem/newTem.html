@@ -49,6 +49,7 @@
 	
 	<!-- Header -->
 	<header class="header shop">
+
 		<!-- Topbar -->
 		<div class="topbar">
 			<div class="container">
@@ -135,7 +136,7 @@
 
 
 							<div class="sinlge-bar shopping">
-								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{ cardCount }}</span></a>
+								<a href="{% url 'cart' %}" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{ cardCount }}</span></a>
 								<!-- Shopping Item -->
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
@@ -147,8 +148,8 @@
                                         {% for mycard in card %}
                                             <li>
                                                 <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                                <a class="cart-img" href="#"><img src="{{ mycard.product.img.url }}" alt="#"></a>
-                                                <h4><a href="#">{{ mycard.product.name }}</a></h4>
+                                                <a class="cart-img" href="{{ mycard.product.get_absolute_url }}"><img src="{{ mycard.product.img.url }}" alt="#"></a>
+                                                <h4><a href="{{ mycard.product.get_absolute_url }}">{{ mycard.product.name }}</a></h4>
                                                 <p class="quantity">{{ mycard.quantity }}x - <span class="amount">{{ mycard.product.res }}</span></p>
 										    </li>
                                         {% endfor %}
@@ -174,6 +175,7 @@
 				</div>
 			</div>
 		</div>
+
 		<!-- Header Inner -->
 		<div class="header-inner">
 			<div class="container">
@@ -203,7 +205,7 @@
 
 
                                                     <li><a href="contact.html">Contact Us</a></li>
-													<li><a href="contact.html">About Us</a></li>
+													<li><a href={% url 'about' %}>About Us</a></li>
 
 
                                             </ul>

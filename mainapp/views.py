@@ -16,6 +16,7 @@ def product_list(request):
         ('plastic', 'Plastic'),
         ('cooker', 'Cooker'),
     )
+
     # for rendering all products
     products = Product.objects.all()
     paginator = Paginator(products, 12)
@@ -33,8 +34,7 @@ def product_list(request):
             cardTotal += crd.amount
 
 
-    return render(request, 'newTem.html',
-                  {'page_obj': page_obj, 'card': card, 'cardCount': cardCount, 'cardTotal': cardTotal,'category':category})
+    return render(request, 'newTem.html',{'page_obj': page_obj, 'card': card, 'cardCount': cardCount, 'cardTotal': cardTotal,'category':category})
 
 
 def details(request, id):
@@ -98,7 +98,7 @@ def search_result(request):
     if len(keyword) > 0:
         searching_result = Product.objects.filter(name__contains=keyword)
         if len(searching_result) > 0:
-            return render(request, "articles.html", {"articles": searching_result})
+            return render(request, "shop-grid.html", {"products": searching_result})
         else:
             errors =["Product not Found","Invalid Keyword"]
             return render(request, "errorpage.html", {"errors": errors})
@@ -108,7 +108,7 @@ def search_result(request):
 def category(request,tag):
     product = Product.objects.filter(tag =tag)
     if len(product)>0:
-        return render(request, "articles.html", {"articles": product})
+        return render(request, "shop-grid.html", {"products": product})
     else:
         errors = ["Product not Available","Thanks for your interest","Stock will available soon"]
         return render(request,'errorpage.html',{'errors':errors})
@@ -117,7 +117,44 @@ def category(request,tag):
 
 
 
+def about(request):
+    category = (
+        ('pitol', 'Pitol'),
+        ('dinner', 'Dinner Set'),
+        ('plastic', 'Plastic'),
+        ('cooker', 'Cooker'),
+    )
+    # for rendering all products
+    products = Product.objects.all()
+    paginator = Paginator(products, 12)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
+    # for managing card and total calculation
+    card = []
+    cardCount = 0
+    cardTotal = 0
+    if request.user.is_authenticated:
+        card = Card.objects.filter(customer=request.user)
+        for crd in card:
+            cardCount += 1
+            cardTotal += crd.amount
+
+    return render(request, 'shop-grid.html',
+                  {'page_obj': page_obj, 'card': card, 'cardCount': cardCount, 'cardTotal': cardTotal,
+                   'category': category})
+
+
+def cart(request):
+    card = []
+    cardCount = 0
+    cardTotal = 0
+    if request.user.is_authenticated:
+        card = Card.objects.filter(customer=request.user)
+        for crd in card:
+            cardCount += 1
+            cardTotal += crd.amount
+    return render (request,'cart.html',{'cards':card})
 
 
 

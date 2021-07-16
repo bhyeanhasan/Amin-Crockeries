@@ -10,4 +10,6 @@ urlpatterns = [
     path('addtowish/<id>/', views.addToWish, name='addToWish'),
     path('showWish/', views.showWish, name='showWish'),
     path('search_result/', views.search_result, name='search_result'),
+    path('about/', views.about, name='about'),
+    path('cart/', views.cart, name='cart'),
 ]

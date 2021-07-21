@@ -1,16 +1,9 @@
-
-
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 SECRET_KEY = '_4y)j0h475#t*gk*$pg#h4(8kpw)(j-h!i$r7vbt+lls+*3@r5'
-
 DEBUG = True
-
 ALLOWED_HOSTS = []
-
-
 
 INSTALLED_APPS = [
     'mainapp.apps.MainappConfig',
@@ -53,14 +46,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -77,17 +68,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
@@ -95,3 +80,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'xstatic')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'oboyob16.official@gmail.com'
+EMAIL_HOST_PASSWORD = 'zcmbhzjiiqufxyeg'
+EMAIL_USE_TLS = True

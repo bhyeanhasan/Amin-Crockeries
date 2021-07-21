@@ -15,7 +15,6 @@
         <div class="col-md-12">
             <p style="float: left;">amincrockerys@gmail.com</p>
             <a class="btn btn-primary" href="/" role="button">Go To Home</a>
-
         </div>
     </div>
 </section>
@@ -27,10 +26,10 @@
 
         <div class="col-md-8">
 
-            <form class="forms" action="updateUser" method="post">
+            <form class="forms" action='{% url 'updateProfile' %}' method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
-                        <input type="text" name="username" class="form-control" value="{{ user.username }}">
+                <input type="text" name="username" class="form-control" value="{{ user.username }}">
 
                 <div class="row">
                     <div class="col">
@@ -45,21 +44,25 @@
                     </div>
                 </div>
 
-                        <input type="text" name="email" class="form-control" value="{{ user.email }}">
+                <input type="text" name="email" class="form-control" value="{{ user.email }}">
 
 
+                <input type="text" name="address" class="form-control" value="{{ profile.address }}">
 
-                        <button style="margin-left: 42%;" type="submit" class="btn btn-primary">Update Profile</button>
+
+                <input type="file" name="profile_pic" class="form-control">
+
+
+                <button style="margin-left: 42%;" type="submit" class="btn btn-primary">Update Profile</button>
 
             </form>
 
 
+            <form class="forms" action="updatepass" method="post">
 
-             <form class="forms" action="updatepass" method="post">
-
-                 {% csrf_token %}
-                 <input type="text" name="oldpass" class="form-control" placeholder="Old Password">
-                 <input type="text" name="pass1" class="form-control" placeholder="New Password">
+                {% csrf_token %}
+                <input type="text" name="oldpass" class="form-control" placeholder="Old Password">
+                <input type="text" name="pass1" class="form-control" placeholder="New Password">
                 <input type="text" name="pass2" class="form-control" placeholder="Confirm Password">
                 <button style="margin-left: 40%;" type="submit" class="btn btn-primary">Update Password</button>
 
@@ -101,9 +104,9 @@
 </section>
 
 
-    <div>
+<div>
 
-    </div>
+</div>
 
 
 <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>

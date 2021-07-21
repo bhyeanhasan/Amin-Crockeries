@@ -141,13 +141,13 @@
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
 										<span>{{ cardCount }} Items</span>
-										<a href="#">View Cart</a>
+										<a href="{% url 'cart' %}">View Cart</a>
 									</div>
 									<ul class="shopping-list">
 
                                         {% for mycard in card %}
                                             <li>
-                                                <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
+                                                <a href="{{ mycard.product.deleteallcart }}" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
                                                 <a class="cart-img" href="{{ mycard.product.get_absolute_url }}"><img src="{{ mycard.product.img.url }}" alt="#"></a>
                                                 <h4><a href="{{ mycard.product.get_absolute_url }}">{{ mycard.product.name }}</a></h4>
                                                 <p class="quantity">{{ mycard.quantity }}x - <span class="amount">{{ mycard.product.res }}</span></p>

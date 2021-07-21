@@ -3,6 +3,7 @@ from .models import Product
 from .models import Card
 from .models import Wishlist
 from django.core.paginator import Paginator
+from django.http import HttpResponseRedirect
 
 
 # Create your views here.
@@ -62,10 +63,47 @@ def addToCard(request, id):
             card = Card(product=product, customer=user, quantity=quantity, amount=price * quantity)
             card.save()
 
-        return redirect('/')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
 
     else:
         return redirect('login')
+
+
+def deletefromcart(request,id):
+    if request.user.is_authenticated:
+        product = get_object_or_404(Product, id=id)
+        user = request.user
+        price = product.res
+        quantity = 0
+
+        card = Card.objects.get(customer=user,product = product)
+
+        if card:
+            if card.quantity<=1:
+                card.delete()
+            else:
+                quantity = card.quantity - 1
+                Card.objects.filter(pk=card.pk).update(quantity=quantity, amount=price * quantity)
+
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+
+    else:
+        return redirect('login')
+
+def deleteallcart(request,id):
+    if request.user.is_authenticated:
+        product = get_object_or_404(Product, id=id)
+        user = request.user
+        card = Card.objects.get(customer=user,product = product)
+
+        if card:
+            card.delete()
+
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+
+    else:
+        return redirect('login')
+
 
 
 def addToWish(request, id):
@@ -154,7 +192,4 @@ def cart(request):
         for crd in card:
             cardCount += 1
             cardTotal += crd.amount
-    return render (request,'cart.html',{'cards':card})
-
-
-
+    return render (request,'cart.html',{'cards':card,'cardtotal':cardTotal})

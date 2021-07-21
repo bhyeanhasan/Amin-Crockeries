@@ -29,11 +29,17 @@
         <div class="card col-md-8">
             
             <div class="card-body" >
-                <a style="width: 30%; float: right" class="btn btn-primary" href="updateprofile" role="button">Update</a>
-                <img class="rounded-circle " style="width: 500px;height: 500px" src="{{ profile.image.url }}">
-                <h6 style="color: #31e126;font-size: 20px" class="card-body"><strong style="color: black;font-size: 16px">User Name : </strong>{{ user.username }}</h6>
-                <h6 class=" card-body"><strong>Name : </strong>{{ user.first_name }} {{ user.last_name }}</h6>
-                <h6 class=" card-body"><strong>Email : </strong>{{ user.email }}</h6>
+                <a style="width: 30%; float: right" class="btn btn-primary" href='{% url 'updateProfile' %}' role="button">Update</a>
+                <a style="width: 30%; float: right" class="btn btn-primary" href='{% url 'sendMail' %}' role="button">sendMail</a>
+                {% if profile.image.url != NULL %}
+                    <img class="rounded-circle " style="width: 500px;height: 500px" src="{{ profile.image.url }}">
+                {% else %}
+                    <img class="rounded-circle " style="width: 500px;height: 500px" src="#">
+                {% endif %}
+                <h6 style="color: #31e126;font-size: 20px" class="card-body"><strong style="color: black;font-size: 16px">User Name : </strong>{{ profile.user.username }}</h6>
+                <h6 class=" card-body"><strong>Name : </strong>{{ profile.user.first_name }} {{ profile.user.last_name }}</h6>
+                <h6 class=" card-body"><strong>Email : </strong>{{ profile.user.email }}</h6>
+                <h6 class=" card-body"><strong>Address : </strong>{{ profile.address }}</h6>
             </div>
             
         </div>

@@ -26,6 +26,14 @@ class Product(models.Model):
         return f"/addtocard/{self.id}/"
 
     @property
+    def deletefromcart(self):
+        return f"/deletefromcart/{self.id}/"
+
+    @property
+    def deleteallcart(self):
+        return f"/deleteallcart/{self.id}/"
+
+    @property
     def addtowish(self):
         return f"/addtowish/{self.id}/"
 

@@ -57,51 +57,48 @@ def logout(request):
 
 
 def profile(request):
-
-    profile = Profile.objects.get(user=request.user)
-    print(profile)
-    if profile:
-        return render(request, 'profile.html',{'profile':profile})
-    else:
-        profile = Profile(user = request.user)
+    try:
+        profile = Profile.objects.get(user=request.user)
+        return render(request, 'profile.html', {'profile': profile})
+    except:
+        profile = Profile(user=request.user)
         profile.save()
         return render(request, 'profile.html', {'profile': profile})
 
 
 def updateProfile(request):
+    profile = Profile.objects.get(user=request.user)
 
-        profile = Profile.objects.get(user = request.user)
+    if request.method == 'POST':
+        username = request.POST['username']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        email = request.POST['email']
+        address = request.POST['address']
 
-        if request.method == 'POST':
-            username = request.POST['username']
-            first_name = request.POST['first_name']
-            last_name = request.POST['last_name']
-            email = request.POST['email']
-            address = request.POST['address']
+        if username != request.user.username:
+            if User.objects.filter(username=username).exists():
+                messages.info(request, 'Username taken')
+                return redirect('updateProfile')
+        elif email != request.user.email:
+            if User.objects.filter(email=email).exists():
+                messages.info(request, 'Email taken')
+                return redirect('updateProfile')
 
-            if username != request.user.username:
-                if User.objects.filter(username=username).exists():
-                    messages.info(request, 'Username taken')
-                    return redirect('updateProfile')
-            elif email != request.user.email:
-                if User.objects.filter(email=email).exists():
-                    messages.info(request, 'Email taken')
-                    return redirect('updateProfile')
+        profile.user.username = username
+        profile.user.first_name = first_name
+        profile.user.last_name = last_name
+        profile.user.email = email
+        profile.address = address
+        if 'profile_pic' in request.FILES:
+            profile.image = request.FILES['profile_pic']
 
-            profile.user.username = username
-            profile.user.first_name = first_name
-            profile.user.last_name = last_name
-            profile.user.email = email
-            profile.address = address
-            if 'profile_pic' in request.FILES:
-                profile.image = request.FILES['profile_pic']
+        profile.user.save()
+        profile.save()
 
-            profile.user.save()
-            profile.save()
-
-            return redirect('profile')
-        else:
-            return render(request, 'updateprofile.html',{'profile':profile})
+        return redirect('profile')
+    else:
+        return render(request, 'updateprofile.html', {'profile': profile})
 
 
 def updatepass(request):
@@ -109,7 +106,7 @@ def updatepass(request):
     pass1 = request.POST['pass1']
     pass2 = request.POST['pass2']
 
-    if(pass1 != pass2 or pass1==''):
+    if (pass1 != pass2 or pass1 == ''):
         messages.info(request, 'Password not matched')
         return redirect('updateprofile')
     if request.user.check_password(olspass):
@@ -119,6 +116,7 @@ def updatepass(request):
     else:
         messages.info(request, 'Wrong Password')
         return redirect('updateprofile')
+
 
 def sendMail(request):
     send_mail(

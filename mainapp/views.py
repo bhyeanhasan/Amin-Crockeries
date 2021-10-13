@@ -8,8 +8,6 @@ from django.http import HttpResponseRedirect
 
 # Create your views here.
 
-
-
 def product_list(request):
     category = (
         ('pitol', 'Pitol'),

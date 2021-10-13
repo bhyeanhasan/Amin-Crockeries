@@ -1,4 +1,5 @@
 import os
+import rest_framework
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_4y)j0h475#t*gk*$pg#h4(8kpw)(j-h!i$r7vbt+lls+*3@r5'
@@ -14,6 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -31,7 +33,7 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,"tem")],
+        'DIRS': [os.path.join(BASE_DIR, "tem")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,3 +88,5 @@ EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'oboyob16.official@gmail.com'
 EMAIL_HOST_PASSWORD = 'zcmbhzjiiqufxyeg'
 EMAIL_USE_TLS = True
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

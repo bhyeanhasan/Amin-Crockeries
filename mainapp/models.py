@@ -8,7 +8,7 @@ class Product(models.Model):
         ('pitol', 'Pitol'),
         ('dinner', 'Dinner Set'),
         ('plastic', 'Plastic'),
-        ('cooker','Cooker'),
+        ('cooker', 'Cooker'),
     )
     name = models.CharField(max_length=100)
     img = models.ImageField(upload_to='pics')
@@ -45,11 +45,12 @@ class Card(models.Model):
     amount = models.IntegerField()
 
     def __str__(self):
-        return self.product.name+" is added by > "+self.customer.username
+        return self.product.name + " is added by > " + self.customer.username
+
 
 class Wishlist(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.product.name+" is added by > "+self.customer.username
+        return self.product.name + " is added by > " + self.customer.username

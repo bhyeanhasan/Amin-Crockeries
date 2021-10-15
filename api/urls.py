@@ -4,5 +4,5 @@ from api import views
 
 urlpatterns = [
     path('', views.product_list, name='api'),
-    path('custom', views.custom_serializer, name='custom'),
+    path('custom/<int:pk>/', views.product_details, name='custom'),
 ]

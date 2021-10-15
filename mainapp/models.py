@@ -11,7 +11,7 @@ class Product(models.Model):
         ('cooker', 'Cooker'),
     )
     name = models.CharField(max_length=100)
-    img = models.ImageField(upload_to='pics')
+    img = models.ImageField(upload_to='pics',blank=True,null=True)
     res = models.IntegerField()
     tag = models.CharField(max_length=100, choices=category)
 

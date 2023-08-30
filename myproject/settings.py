@@ -4,7 +4,7 @@ import rest_framework
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_4y)j0h475#t*gk*$pg#h4(8kpw)(j-h!i$r7vbt+lls+*3@r5'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'mainapp.apps.MainappConfig',

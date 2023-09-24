@@ -1,0 +1,62 @@
+{% extends 'component/base_profile.html'%}
+{% load static %}
+
+{% block details %}
+
+<div class="col-md-9">
+
+    {%for order in orders%}
+
+    <div style="text-align: left" class="mb-3">
+        <div class="card">
+            <div style="background-color: #acbdbd" class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        STATUS : {{order.status}}<br>
+
+                        TOTAL AMOUNT: {{order.total_amount}}
+                    </div>
+                    <div style="text-align: right" class="col-md-6">
+                        <a href="{%url 'orderDetails' order.id%}">ORDER ID: {{order.id}}</a><br>
+                        PLACE TIME: {{order.placed_at}}
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            {% for item in orderItems %}
+            {% if item.order.id == order.id %}
+
+
+            <div class="row p-1">
+                <div style="text-align: center" class="col-md-2">
+                    <img style="width: 60px;height: 60px" src="{{item.product.img.url}}">
+                </div>
+                <div style="text-align: left" class="col-md-7">
+                    <h6 style="overflow: hidden;height: 50px;padding: 5px"><a
+                            style="text-decoration: none;color: #0E674D"
+                            href="{{item.product.get_absolute_url}}">
+                        {{item.product.name}}</a></h6>
+
+                </div>
+                <div style="text-align: left" class="col-md-3">
+                    <h5>৳ {{item.product.unit_price}} * {{item.quantity}} </h5>
+
+                </div>
+            </div>
+
+
+            {% endif%}
+            {% endfor %}
+
+        </div>
+    </div>
+
+    {%endfor%}
+
+</div>
+
+{% endblock %}

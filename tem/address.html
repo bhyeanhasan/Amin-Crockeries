@@ -1,0 +1,178 @@
+{% extends 'component/base_profile.html'%}
+{% load static %}
+
+{% block details %}
+
+<div class="col-md-9">
+    <div class="card ">
+        <div class="card-body">
+            <form style="text-align: left" class="forms" action="{% url 'addAddress' %}" method="post"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <input hidden name="id" value="{{address.id}}">
+
+                <div class="mb-1 row">
+                    <label class="col-sm-2 col-form-label">Address name</label>
+                    <div class="col-sm-10">
+                        <input required type="text" name="address_name" class="form-control" value="{{ address.address_name }}">
+                    </div>
+                </div>
+
+                <div class="mb-1 row">
+                    <label class="col-sm-2 col-form-label">Mobile</label>
+                    <div class="col-sm-10">
+                        <input required type="text" name="mobile" class="form-control" value="{{ address.mobile }}">
+                    </div>
+                </div>
+
+                <div class="mb-1 row">
+                    <label class="col-sm-2 col-form-label">Alternate</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="alternate_mobile" class="form-control my-2"
+                               value="{{ address.alternate_mobile }}">
+                    </div>
+                </div>
+
+                <div class="mb-1 row">
+                    <label class="col-sm-2 col-form-label">Division</label>
+                    <div class="col-sm-10">
+                        <input required type="text" name="division" class="form-control" value="{{address.division}}">
+                    </div>
+                </div>
+
+                <div class="mb-1 row">
+                    <label class="col-sm-2 col-form-label">District</label>
+                    <div class="col-sm-10">
+                        <input required type="text" name="district" class="form-control" value="{{address.district}}">
+                    </div>
+                </div>
+
+                <div class="mb-1 row">
+                    <label class="col-sm-2 col-form-label">Upazila</label>
+                    <div class="col-sm-10">
+                        <input required type="text" name="upazila" class="form-control" value="{{address.upazila}}">
+                    </div>
+                </div>
+                <div class="mb-1 row">
+                    <label class="col-sm-2 col-form-label">Zipcode</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="zipcode" class="form-control" value="{{address.zipcode}}">
+                    </div>
+                </div>
+                <div class="mb-1 row">
+                    <label class="col-sm-2 col-form-label">Road address</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="address" class="form-control" value="{{address.address}}">
+                    </div>
+                </div>
+
+                <div style="text-align: center">
+                    <button type="submit" class="btn btn-danger my-2">Add New Address</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<h2 class="mt-3">Your Address Book</h2>
+<hr>
+{% for address in addresses %}
+
+<div class="col-md-4 mb-3">
+
+    <div class="card ">
+        <div class="card-body">
+
+            <div style="text-align: right">
+                <a style="margin-right: 20px" href="{% url 'deleteAddress' address.id %}"><i class="bi bi-trash3-fill"></i></a>
+                <a href="{% url 'showAddress' address.id %}"><i class="bi bi-pencil-square"></i> </a>
+            </div>
+
+            <h4>{{address.address_name}} </h4>
+
+
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Mobile</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{address.mobile}}
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Alternate Mobile</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{address.alternate_mobile}}
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Division</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{address.division}}
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">District</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{address.district}}
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Upazila</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{address.upazila}}
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Zipcode</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{address.zipcode}}
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Road address</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{address.address}}
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

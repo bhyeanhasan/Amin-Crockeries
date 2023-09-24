@@ -1,15 +1,40 @@
+{% extends 'component/base_profile.html'%}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Wish List</title>
-</head>
-<body>
-    {% for wish in wishlist %}
-        <p>{{ wish.product.name }}</p>
-        <p>{{ wish.product.res }}</p>
-    {% endfor %}
 
-</body>
-</html>
+{% block details %}
+
+<div class="col-md-9">
+
+    {%for wishitem in wishListItems%}
+    <div class="card mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <img style="width: 100px;height: 100px" src="{{wishitem.product.img.url}}">
+                </div>
+                <div style="text-align: left" class="col-md-7">
+                    <h5 style="overflow: hidden;height: 30px"><a style="text-decoration: none;color: #0E674D"
+                                                                 href="{{wishitem.product.get_absolute_url}}">
+                        {{wishitem.product.name}}</a></h5>
+
+                    <p style="word-wrap: break-word;word-break: break-word;height: 70px;overflow: hidden">
+                        {{wishitem.product.description}}</p>
+                </div>
+                <div style="text-align: left" class="col-md-3">
+                    <h2>৳ {{wishitem.product.unit_price}}</h2>
+                    <div style="margin-top: 30px"></div>
+                    <span style="margin-right: 30px">
+                        <a style="color: #0E674D" href="{% url 'addToCart' wishitem.product.id %}"><i class="bi bi-bag-check-fill"></i></a>
+                    </span>
+                    <span>
+                        <a style="color: red" href="{% url 'deleteWishItem' wishitem.id %}"><i class="bi bi-trash3-fill"></i></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+
+</div>
+
+{% endblock %}

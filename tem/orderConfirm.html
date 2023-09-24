@@ -1,0 +1,125 @@
+{% extends 'component/base_profile.html'%}
+{% load static %}
+
+{% block details %}
+
+<div class="col-md-9">
+
+    <div style="text-align: left" class="">
+        <h4>ORDER DETAILS</h4>
+    </div>
+    <hr>
+
+    <form method="post" action="{% url 'orderConfirm'%}">
+        {% csrf_token %}
+
+        <div class="row mb-2">
+            <div class="col-sm-4">
+                <h6 class="mb-0 form-control">Total amount</h6>
+            </div>
+            <div class="col-sm-8 text-secondary">
+                <input type="text" name="total_amount" class="form-control" value="{{total_amount}}" readonly>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-sm-4">
+                <h6 class="mb-0 form-control">Payment Status</h6>
+            </div>
+            <div class="col-sm-8 text-secondary">
+                <input type="text" name="payment_status" class="form-control" value="Cash On Delivery" readonly>
+            </div>
+        </div>
+
+
+        <div class="row mb-2">
+            <div class="col-sm-4">
+                <h6 class="mb-0 form-control">Address</h6>
+            </div>
+            <div class="col-sm-8 text-secondary">
+                <select name="address" class="form-select" required>
+                    {%for address in addresses%}
+                    <option value="{{address.id}}">{{address.address_name}}</option>
+                    {%endfor%}
+                </select>
+            </div>
+        </div>
+
+
+        <div class="card my-3" style="background-color: ghostwhite">
+            <div class="card-body">
+
+                <div style="text-align: left" class="row mb-2">
+                    <div class="col-md-1">
+                        <h6>No</h6>
+                    </div>
+                    <div class="col-md-5">
+                        <h6>Product Name</h6>
+                    </div>
+                    <div class="col-md-2">
+                        <h6>Unit Price </h6>
+                    </div>
+
+                    <div class="col-md-2">
+                        <h6>Quantity</h6>
+                    </div>
+
+
+                    <div class="col-md-2">
+                        <h6>Net amount</h6>
+                    </div>
+                </div>
+                <hr style="margin-top:0px">
+
+
+                {% for item in items %}
+
+                <div style="text-align: left" class="row mb-2">
+                    <div class="col-md-1">
+                        <h6>{{ forloop.counter }}</h6>
+                    </div>
+                    <div class="col-md-5">
+                        <h6>{{ item.product.name}}</h6>
+                    </div>
+                    <div class="col-md-2">
+                        <h6> ৳ {{ item.product.unit_price}} </h6>
+                    </div>
+
+                    <div class="col-md-1">
+                        <h6>* {{ item.quantity}}</h6>
+                    </div>
+
+                    <div class="col-md-1">
+                        <h6>= </h6>
+                    </div>
+                    <div class="col-md-2">
+                        <h6>{% widthratio item.quantity 1 item.product.unit_price %}</h6>
+                    </div>
+                </div>
+
+                {% endfor %}
+                <hr>
+                <div class="row" style="text-align: left">
+                    <div class="col-md-7">
+                    </div>
+                    <div class="col-md-2">
+                        <h5>Total</h5>
+                    </div>
+                    <div class="col-md-1">
+                        <h5>=</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>{{total_amount}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-warning">Confirm Order</button>
+
+    </form>
+
+
+</div>
+
+{% endblock %}

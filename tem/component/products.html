@@ -1,0 +1,33 @@
+<div class="container">
+    <h3 class="text-center mb-4">Featured Products</h3>
+    <div class="row">
+
+        {% for product in products%}
+
+        <div class="col-md-3 mb-3">
+            <div class="card">
+
+                <a href="{{product.get_absolute_url}}"> <img src="{{product.img.url}}" class="card-img-top product_img"
+                                                             alt="Product 1"></a>
+                <div class="card-body">
+                    <h5 class="card-title" style="height: 20px;overflow: hidden">{{product.name}}</h5>
+                    <h5 class="card-text">{{product.unit_price}} <strong>৳</strong></h5>
+
+                    <i class=" bi bi-star"></i>
+                    <i class=" bi bi-star"></i>
+                    <i class=" bi bi-star"></i>
+                    <i class=" bi bi-star"></i>
+
+                    <span class="btn" style="float:right;">
+                    <a href="{% url 'addToWishList' product.id %}" class="btn "><i class="bi bi-heart"></i> Fav</a>
+
+                    <a href="{% url 'addToCart' product.id %}" class="btn"><i class="bi bi-bag-plus"></i> Cart</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+    </div>
+</div>

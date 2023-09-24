@@ -1,0 +1,90 @@
+{% extends 'component/base_profile.html'%}
+{% load static %}
+
+{% block details %}
+
+
+<div class="col-md-9">
+
+    <h5>Edit Address</h5>
+    <hr>
+    <form style="text-align: left" class="forms" action="{% url 'editAddress' %}" method="post"
+          enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input hidden name="id" value="{{address.id}}">
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Address name</label>
+            <div class="col-sm-10">
+                <input type="text" name="address_name" class="form-control" value="{{ address.address_name }}">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Mobile</label>
+            <div class="col-sm-10">
+                <input type="text" name="mobile" class="form-control" value="{{ address.mobile }}">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Alternate mobile</label>
+            <div class="col-sm-10">
+                <input type="text" name="alternate_mobile" class="form-control my-2"
+                       value="{{ address.alternate_mobile }}">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Division</label>
+            <div class="col-sm-10">
+                <input type="text" name="division" class="form-control" value="{{address.division}}">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">District</label>
+            <div class="col-sm-10">
+                <input type="text" name="district" class="form-control" value="{{address.district}}">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Upazila</label>
+            <div class="col-sm-10">
+                <input type="text" name="upazila" class="form-control" value="{{address.upazila}}">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Zipcode</label>
+            <div class="col-sm-10">
+                <input type="text" name="zipcode" class="form-control" value="{{address.zipcode}}">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Road address</label>
+            <div class="col-sm-10">
+                <input type="text" name="address" class="form-control" value="{{address.address}}">
+            </div>
+        </div>
+
+        <div style="text-align: center">
+            <button type="submit" class="btn btn-danger my-2">Update Address</button>
+        </div>
+
+    </form>
+
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

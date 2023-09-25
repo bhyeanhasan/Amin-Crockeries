@@ -3,6 +3,7 @@ from .models import Wishlist, Cart, Order, OrderedItem
 from manage_product.models import Product
 from manage_user.models import Customer, Address
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 def order(request):
@@ -74,6 +75,9 @@ def addToWishList(request, id):
         wish.product = product
         wish.customer = customer
         wish.save()
+        messages.info(request, 'Product added to Wishlist')
+    else:
+        messages.info(request, 'Product already in Wishlist')
 
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
@@ -81,6 +85,7 @@ def addToWishList(request, id):
 def deleteWishItem(request, id):
     wishItem = Wishlist.objects.get(id=id)
     wishItem.delete()
+    messages.info(request, 'Successfully Deleted')
     return redirect("wishList")
 
 
@@ -104,6 +109,7 @@ def addToCart(request, id):
         cart.customer = customer
         cart.save()
 
+    messages.info(request, 'Product added to Cart')
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
@@ -114,4 +120,5 @@ def deleteCartItem(request, id):
         cartItem.save()
     else:
         cartItem.delete()
+    messages.info(request, 'Successfully Deleted')
     return redirect("cart")

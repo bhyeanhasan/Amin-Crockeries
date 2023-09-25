@@ -1,4 +1,18 @@
-.product_img{
+.product_img {
     height: 300px;
 }
 
+.details-img {
+
+}
+
+.details-btn{
+    width: 100%;
+    background-color: coral;
+    margin-bottom: 10px;
+}
+
+.notification{
+    position: absolute;
+    z-index: 9;
+}

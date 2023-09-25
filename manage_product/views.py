@@ -30,9 +30,8 @@ def product_list(request):
 
 
 def details(request, id):
-    data = get_object_or_404(Product, id=id)
-    print(id)
-    return render(request, 'details.html', {"datas": data})
+    product = get_object_or_404(Product, id=id)
+    return render(request, 'details.html', {"product": product})
 
 
 def search_result(request):
@@ -43,7 +42,6 @@ def search_result(request):
     else:
         errors = ["Product not Found", "We cannot find any matches for your search term."]
         return render(request, "errorpage.html", {"errors": errors})
-
 
 
 def category(request, id):

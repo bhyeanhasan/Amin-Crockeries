@@ -4,6 +4,7 @@ from manage_product.models import Product
 from manage_user.models import Customer, Address
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from manage_user.views import sendMail
 
 
 def order(request):
@@ -31,6 +32,11 @@ def orderConfirm(request):
         order.payment_status = payment_status
         order.total_amount = total_amount
         order.save()
+
+        sendMail(request.user.email, "Order Placed",
+                 "Dear " + customer.name + "\n\n" +
+                 "Your order ID = " + str(order.id) + ", has been placed at " +
+                 str(order.placed_at) + "\nTotal amount = " + str(order.total_amount)+" BDT")
 
         carts = Cart.objects.filter(customer=customer)
         for cart in carts:

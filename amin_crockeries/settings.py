@@ -93,3 +93,6 @@ EMAIL_USE_TLS = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
+LOGIN_REDIRECT_URL = '/manage_user/login'
+LOGIN_URL = '/manage_user/login'
+

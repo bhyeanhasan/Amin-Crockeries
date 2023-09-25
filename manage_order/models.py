@@ -23,12 +23,12 @@ class Wishlist(models.Model):
 
 
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL,null=True)
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
     address = models.ForeignKey(Address, on_delete=models.SET_NULL, blank=True, null=True)
     total_amount = models.FloatField(default=0.0)
     placed_at = models.DateTimeField(default=datetime.now())
     payment_status = models.CharField(max_length=50, default="Pending")
-    status = models.CharField(max_length=500,default="Placed")
+    status = models.CharField(max_length=500, default="Placed")
 
     def __str__(self):
         return "Amount : " + str(self.total_amount) + " // Placed at: " + str(self.placed_at.date())
@@ -36,8 +36,8 @@ class Order(models.Model):
 
 class OrderedItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
     quantity = models.IntegerField(default=1)
     unit_price = models.FloatField()
 

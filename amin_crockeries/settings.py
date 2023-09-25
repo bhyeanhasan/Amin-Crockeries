@@ -1,8 +1,5 @@
 import os
 import rest_framework
-import mimetypes
-
-mimetypes.add_type("text/css", ".css", True)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_4y)j0h475#t*gk*$pg#h4(8kpw)(j-h!i$r7vbt+lls+*3@r5'
@@ -10,8 +7,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
-    'jet.dashboard',
-    'jet',
     'manage_user',
     'manage_product',
     'manage_api',
@@ -23,7 +18,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-
 ]
 
 MIDDLEWARE = [
@@ -98,4 +92,4 @@ EMAIL_HOST_PASSWORD = 'zcmbhzjiiqufxyeg'
 EMAIL_USE_TLS = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
-JET_SIDE_MENU_COMPACT = True
+

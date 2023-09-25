@@ -1,12 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Somethig Wrong</title>
-</head>
-<body>
-        {% for error in errors %}
-            <p>{{ error }}</p>
-        {% endfor %}
-</body>
-</html>
+{% extends 'component/base.html' %}
+{% load static %}
+
+{% block hero %}
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container text-center p-3 ">
+        <div style="height: 80vh" class="row m-3 d-flex align-items-center">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <img class="sorryimage my-3" src="{% static 'images/sorry.png' %}">
+
+                {% for error in errors %}
+                    <h4 style="color: red" class="mb-3">{{ error }}</h4>
+                {% endfor %}
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+

@@ -1,66 +1,69 @@
-{% extends 'component/base.html'%}
+{% extends 'component/base.html' %}
 {% load static %}
 
 {% block content %}
 
-<section class="container main">
-    <div class="row ">
-        <div class="col-md-12">
-            <div class="wrapper">
-                <div class="formContent">
-                    <div class="card-body">
-                        <div class="container">
-                            <div class="row">
+    <section class="container main">
+        <div class="row ">
+            <div class="col-md-12">
+                <div class="wrapper">
+                    <div class="formContent">
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
 
-                                <div class="col-md-3">
-                                    <div class="card ">
-                                        <div class="card-body">
-                                            <h5>Manage your profile</h5>
-                                            <hr>
+                                    <div class="col-md-3">
+                                        <div class="card ">
+                                            <div class="card-body">
+                                                <h5>Manage your profile</h5>
+                                                <hr>
 
-                                            <div style="background-color: white" class="categorylist p-2">
-                                                <ul style="text-align: left" class="nav flex-column">
+                                                <div style="background-color: white" class="categorylist p-2">
+                                                    <ul style="text-align: left" class="nav flex-column">
 
-                                                    <li class=" category nav-item">
-                                                        <a class="nav-link" href="{% url 'profile' %}"><i
-                                                                class="bi bi-person-fill"></i> Profile</a>
-                                                    </li>
-                                                    <li class=" category nav-item">
-                                                        <a class="nav-link" href="{% url 'address' %}"><i class="bi bi-geo-alt-fill"></i>
-                                                            Address Book</a>
-                                                    </li>
-                                                    <li class=" category nav-item">
-                                                        <a class="nav-link" href="{% url 'order' %}"><i class="bi bi-clock-history"></i>
-                                                            Order history</a>
-                                                    </li>
-                                                    <li class=" category nav-item">
-                                                        <a class="nav-link" href="{% url 'wishList' %}"><i class="bi bi-heart-fill"></i>
-                                                            Wish List</a>
-                                                    </li>
-                                                    <li class=" category nav-item">
-                                                        <a class="nav-link" href="{% url 'cart' %}"><i
-                                                                class="bi bi-bag-check-fill"></i> View Cart</a>
-                                                    </li>
+                                                        <li class=" category nav-item">
+                                                            <a class="nav-link" href="{% url 'profile' %}"><i
+                                                                    class="bi bi-person-fill"></i> Profile</a>
+                                                        </li>
+                                                        <li class=" category nav-item">
+                                                            <a class="nav-link" href="{% url 'cart' %}"><i
+                                                                    class="bi bi-bag-check-fill"></i> View Cart</a>
+                                                        </li>
+                                                        <li class=" category nav-item">
+                                                            <a class="nav-link" href="{% url 'wishList' %}"><i
+                                                                    class="bi bi-heart-fill"></i>
+                                                                Wish List</a>
+                                                        </li>
+                                                        <li class=" category nav-item">
+                                                            <a class="nav-link" href="{% url 'order' %}"><i
+                                                                    class="bi bi-clock-history"></i>
+                                                                Order history</a>
+                                                        </li>
+                                                        <li class=" category nav-item">
+                                                            <a class="nav-link" href="{% url 'address' %}"><i
+                                                                    class="bi bi-geo-alt-fill"></i>
+                                                                Address Book</a>
+                                                        </li>
 
-                                                </ul>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
+
+
                                     </div>
 
+                                    {% block details %}
+                                    {% endblock %}
 
                                 </div>
-
-                                {% block details %}
-                                {% endblock %}
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 {% endblock %}
 

@@ -1,21 +1,44 @@
 
-.categorylist{
+.categorylist {
     border-radius: 10px;
 }
-.nav-link{
+
+.nav-link {
     color: #0e295b;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     color: white;
 }
 
-.nav-item:hover{
+.nav-item:hover {
     color: white;
     background-color: orangered;
     border-radius: 5px;
 }
 
-.banner{
+.banner {
     width: 95%;
+}
+
+.search-logo {
+    height: 100px;
+    padding: 5px;
+}
+
+.searchdiv {
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.searchbtn{
+    background-color: coral;
+}
+.searchbanner{
+    height: 100px;
+}
+
+.sorryimage{
+    height: 300px;
 }

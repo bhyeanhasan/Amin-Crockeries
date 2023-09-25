@@ -7,9 +7,9 @@
             <ul class=" nav flex-column">
 
                 {% for category in categories %}
-                <li class=" category nav-item">
-                    <a class="nav-link" href="#">{{category.name}}</a>
-                </li>
+                    <li class=" category nav-item">
+                        <a class="nav-link" href="{% url 'category' category.id %}">{{ category.name }}</a>
+                    </li>
                 {% endfor %}
             </ul>
         </div>
@@ -41,8 +41,46 @@
                 </button>
             </div>
         </div>
+
+
+    </div>
+
+    <div class="row searchdiv mt-2 d-flex align-items-center">
+        <div class="col-md-3">
+            <img class="search-logo" src="{% static 'images/logo.png' %}">
+        </div>
+
+        <div class="col-md-6">
+            <form action="{% url 'search_result' %}" method="get">
+                <div class="input-group m-1">
+                    <input name="search" type="search" list="datalistOptions" class="form-control rounded p-2"
+                           placeholder="Search products ..." aria-label="Search"
+                           aria-describedby="search-addon" required/>
+                    <datalist id="datalistOptions">
+                        <option value="San Francisco">
+                        <option value="New York">
+                        <option value="Seattle">
+                        <option value="Los Angeles">
+                        <option value="Chicago">
+                    </datalist>
+                    <button type="submit" class="btn searchbtn p-2"><i class="bi bi-search"></i> Search</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-3">
+            <img class="searchbanner" src="{% static 'images/banner2.png' %}">
+        </div>
+
+
+    </div>
+
+    <div class="row">
         <div class="col-md-12">
-            <img class="banner mx-auto rounded d-block my-2 px-1" src="{% static 'images/free.png'%}">
+            <img class="banner mx-auto rounded d-block my-2 px-1" src="{% static 'images/free.png' %}">
         </div>
     </div>
+
+
 </div>
+

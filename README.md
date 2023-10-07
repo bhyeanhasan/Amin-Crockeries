@@ -1,5 +1,4 @@
-# Django-Based-E-Commerce-website
-My first Django project
+## Django Based E-Commerce website
 
-Visite The Website [Website](http://bhyean.pythonanywhere.com/).
+Visite The Website [Azure](https://amincrockeries.azurewebsites.net/)
 

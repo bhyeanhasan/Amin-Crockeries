@@ -8,7 +8,7 @@ from manage_user.views import sendMail
 
 
 def order(request):
-    orders = Order.objects.filter(customer__user=request.user)
+    orders = Order.objects.filter(customer__user=request.user).order_by('placed_at').reverse()
     orderItems = OrderedItem.objects.filter(customer__user=request.user)
 
     for order in orders:
@@ -23,8 +23,9 @@ def orderConfirm(request):
         address_id = request.POST.get('address')
         address = Address.objects.get(id=address_id)
 
-        if float(total_amount) <= 0:
-            return redirect('order')
+        # if float(total_amount) <= 0:
+        #     messages.info(request, 'No items in your cart')
+        #     return redirect('order')
 
         order = Order()
         order.customer = customer
@@ -51,6 +52,11 @@ def orderConfirm(request):
         return redirect('order')
 
     cart = Cart.objects.filter(customer__user=request.user)
+
+    if float(len(cart)) <= 0:
+        messages.info(request, 'No items in your cart')
+        return redirect('order')
+
     total_amount = 0
     for i in cart:
         total_amount += i.product.unit_price * i.quantity
@@ -68,6 +74,8 @@ def orderDetails(request, id):
 
 def wishList(request):
     wishListItems = Wishlist.objects.filter(customer__user=request.user)
+    if len(wishListItems) <= 0:
+        messages.info(request, 'No items in your wishlist')
     return render(request, 'wishlist.html', {'wishListItems': wishListItems})
 
 
@@ -97,6 +105,8 @@ def deleteWishItem(request, id):
 
 def cart(request):
     cartitems = Cart.objects.filter(customer__user=request.user)
+    if len(cartitems) <= 0:
+        messages.info(request, 'No items in your cart')
     return render(request, 'cart.html', {'cartitems': cartitems})
 
 

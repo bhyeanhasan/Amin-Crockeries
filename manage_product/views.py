@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 
 def product_list(request):
     products = Product.objects.all()
-    paginator = Paginator(products, 12)
+    paginator = Paginator(products, 2)
     page_number = request.GET.get('page')
     products = paginator.get_page(page_number)
 

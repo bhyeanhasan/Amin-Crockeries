@@ -57,11 +57,10 @@
                            placeholder="Search products ..." aria-label="Search"
                            aria-describedby="search-addon" required/>
                     <datalist id="datalistOptions">
-                        <option value="San Francisco">
-                        <option value="New York">
-                        <option value="Seattle">
-                        <option value="Los Angeles">
-                        <option value="Chicago">
+                        {% for search in search_history %}
+                        <option value="{{ search }}">
+                        {% endfor %}
+
                     </datalist>
                     <button type="submit" class="btn searchbtn p-2"><i class="bi bi-search"></i> Search</button>
                 </div>

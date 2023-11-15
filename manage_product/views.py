@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 
 def product_list(request):
     products = Product.objects.all()
-    paginator = Paginator(products, 2)
+    paginator = Paginator(products, 4)
     page_number = request.GET.get('page')
     products = paginator.get_page(page_number)
 
@@ -26,7 +26,10 @@ def product_list(request):
     # return render(request, 'newTem.html',{'page_obj': page_obj, 'card': card, 'cardCount': cardCount, 'cardTotal': cardTotal,'category':category})
     categories = Category.objects.all()
 
-    return render(request, 'home.html', {'products': products, 'categories': categories})
+    search_history = request.COOKIES.get('search_history', '').split(',')
+    search_history = [query.strip() for query in search_history if query.strip()]
+
+    return render(request, 'home.html', {'products': products, 'categories': categories,'search_history':search_history})
 
 
 def details(request, id):
@@ -37,11 +40,19 @@ def details(request, id):
 def search_result(request):
     keyword = request.GET.get("search")
     products = Product.objects.filter(name__contains=keyword)
+
+
     if len(products) > 0:
-        return render(request, "listProduct.html", {"products": products})
+        response = render(request, "listProduct.html", {"products": products})
     else:
         errors = ["Product not Found", "We cannot find any matches for your search term."]
-        return render(request, "errorpage.html", {"errors": errors})
+        response = render(request, "errorpage.html", {"errors": errors})
+
+    search_history = request.COOKIES.get('search_history', '').split(',')
+    search_history = [query.strip() for query in search_history if query.strip()]  # Remove empty queries
+    search_history.insert(0, keyword)
+    response.set_cookie('search_history', ','.join(search_history[:5]))  # Save only the latest 5 queries
+    return response
 
 
 def category(request, id):

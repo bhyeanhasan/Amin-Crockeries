@@ -1,10 +1,17 @@
+import reportlab.lib.colors
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from reportlab.pdfbase.pdfmetrics import stringWidth
+
 from .models import Wishlist, Cart, Order, OrderedItem
 from manage_product.models import Product
 from manage_user.models import Customer, Address
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from manage_user.views import sendMail
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter, A4
+from reportlab.lib.colors import HexColor
 
 
 def order(request):
@@ -37,7 +44,7 @@ def orderConfirm(request):
         sendMail(request.user.email, "Order Placed",
                  "Dear " + customer.name + "\n\n" +
                  "Your order ID = " + str(order.id) + ", has been placed at " +
-                 str(order.placed_at) + "\nTotal amount = " + str(order.total_amount)+" BDT")
+                 str(order.placed_at) + "\nTotal amount = " + str(order.total_amount) + " BDT")
 
         carts = Cart.objects.filter(customer=customer)
         for cart in carts:
@@ -70,6 +77,113 @@ def orderDetails(request, id):
     order = Order.objects.get(id=id)
     items = OrderedItem.objects.filter(order=order)
     return render(request, 'orderDetails.html', {'order': order, 'items': items})
+
+
+def download_voucher(request, id):
+    order = Order.objects.get(id=id)
+    items = OrderedItem.objects.filter(order=order)
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment;' + ' filename="Order_' + str(order.id) + '.pdf"'
+
+    # Create the PDF object, using the response object as its "file."
+    p = canvas.Canvas(response, pagesize=A4)
+    width, height = A4
+
+    fontname = 'Courier'
+    fontsize = 10
+    p.setFont(fontname, fontsize)
+    p.drawString(40, height - 40, 'Order ID : ' + str(order.id))
+
+    fontname = 'Courier'
+    fontsize = 24
+    text = "Amin Crockeries"
+    p.setFont(fontname, fontsize)
+    # p.setFillColor(HexColor(0xff8100))
+    p.setFillColor(HexColor(0x800080))
+    text_width = stringWidth(text, fontname, fontsize)
+    p.drawString((width - text_width) / 2, height - 50, text)
+
+    fontsize = 12
+    text = "Doctor Potti Road, Jhalokathi"
+    p.setFont(fontname, fontsize)
+    text_width = stringWidth(text, fontname, fontsize)
+    p.drawString((width - text_width) / 2, height - 70, text)
+
+    fontsize = 12
+    text = "Mobile: 01728253400 Email: bhyean@gmail.com"
+    p.setFont(fontname, fontsize)
+    text_width = stringWidth(text, fontname, fontsize)
+    p.drawString((width - text_width) / 2, height - 85, text)
+
+    p.setFillColor(HexColor(0x000000))
+
+    fontsize = 14
+    name = "Name : " + order.customer.name
+    address = "Con No: " + order.address.mobile
+    p.setFont(fontname, fontsize)
+    text_width = stringWidth(address, fontname, fontsize)
+    p.drawString(50, height - 110, name)
+    p.drawString((width - 50 - text_width), height - 110, address)
+
+    fontsize = 14
+    address = "Address : " + order.address.address
+    time = "Date : " + str(order.placed_at.date())
+    p.setFont(fontname, fontsize)
+    text_width = stringWidth(time, fontname, fontsize)
+    p.drawString(50, height - 125, address)
+    p.drawString((width - 50 - text_width), height - 125, time)
+
+    p.line(40, height - 135, width - 40, height - 135)
+
+    fontsize = 14
+    p.setFont(fontname, fontsize)
+
+    cnt = 1
+    space = 155
+
+    p.setFillColor(HexColor(0x0000EE))
+
+    p.drawString(50, height - space, 'No')
+    p.drawString(70, height - space, 'Product Name')
+    p.drawString(320, height - space, 'Q * Unit Price')
+    p.drawString(420, height - space, '    Price')
+
+    p.setFillColor(HexColor(0x008000))
+
+    space += 30
+    for item in items:
+        p.drawString(50, height - space, str(cnt))
+        p.drawString(70, height - space, item.product.name[:25])
+        p.drawString(320, height - space, str(item.quantity) + ' * ' + str(item.unit_price))
+        p.drawString(420, height - space, ' =  ' + str(item.unit_price * item.quantity))
+        p.drawString(width - 80, height - space, ' BDT ')
+        cnt += 1
+        space += 25
+
+    p.line(300, height - space + 10, width - 40, height - space + 10)
+
+    p.setFillColor(HexColor(0xef503b))
+
+    p.drawString(320, height - space - 5, 'TOTAL AMOUNT')
+    p.drawString(420, height - space - 5, ' =  ' + str(order.total_amount))
+    p.drawString(width - 80, height - space - 5, ' BDT ')
+
+    fontsize = 100
+    fontname = 'Helvetica'
+    p.setFont(fontname, fontsize)
+    text = 'PAID'
+    text_width = stringWidth(text, fontname, fontsize)
+    p.setFillColorCMYK(0, 0, 0, 0.08)
+    p.drawString((width / 2) - (text_width / 2), (height / 2) - 35, text)
+
+    p.setStrokeColorCMYK(0,0,0,0.08)
+    p.ellipse((width / 2) - 180, (height / 2) - 70, (width / 2) + 180, (height / 2) + 70)
+    p.ellipse((width / 2) - 182, (height / 2) - 71, (width / 2) + 182, (height / 2) + 71)
+
+    p.showPage()
+    p.save()
+    return response
 
 
 def wishList(request):

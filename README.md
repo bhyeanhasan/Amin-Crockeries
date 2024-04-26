@@ -16,7 +16,7 @@
 * Github
 * Docker
 
-```angular2html
+```
 pip install django
 pip install djangorestframework
 pip install reportlab

@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 
 def product_list(request):
     products = Product.objects.all()
-    paginator = Paginator(products, 4)
+    paginator = Paginator(products, 8)
     page_number = request.GET.get('page')
     products = paginator.get_page(page_number)
 
@@ -29,7 +29,8 @@ def product_list(request):
     search_history = request.COOKIES.get('search_history', '').split(',')
     search_history = [query.strip() for query in search_history if query.strip()]
 
-    return render(request, 'home.html', {'products': products, 'categories': categories,'search_history':search_history})
+    return render(request, 'home.html',
+                  {'products': products, 'categories': categories, 'search_history': search_history})
 
 
 def details(request, id):
@@ -40,7 +41,6 @@ def details(request, id):
 def search_result(request):
     keyword = request.GET.get("search")
     products = Product.objects.filter(name__contains=keyword)
-
 
     if len(products) > 0:
         response = render(request, "listProduct.html", {"products": products})

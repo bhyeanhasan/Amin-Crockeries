@@ -35,7 +35,7 @@ ROOT_URLCONF = 'amin_crockeries.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "tem")],
+        'DIRS': [os.path.join(BASE_DIR, "template")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

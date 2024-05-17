@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 5px auto;
+            background-color: rgba(211, 211, 211, 0.62);
+        }
+
+
+        .footer {
+            margin-top: 15px;
+        }
+
+
+        .thanks-message {
+            margin-top: 10px;
+            font-weight: 400;
+        }
+
+         h2, h3, h4, h5, h6, p {
+            margin: 0;
+            padding: 0;
+            color: #0b3459;;
+        }
+
+        .main {
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="title"
+         style="background-color: #f67c01;padding-top:10px;padding-bottom: 10px;text-align: center;color: white">
+        <h1>Order Confirmation</h1>
+    </div>
+    <div class="main">
+        <h4 style="margin-top: 5px;margin-bottom: 10px">Dear {{ name }},</h4>
+        <h4>Your order (ID: {{ order_id }}) has been placed on {{ order_placed_at }}</h4>
+        <h4 style="margin-top: 5px">Total amount: {{ order_total_amount }} BDT</h4>
+        <div class="thanks-message">
+            <h4>Thank you for shopping with us! We appreciate your business and hope you enjoy your purchase.</h4>
+        </div>
+        <div class="footer">
+            <h5>Amin Crockerise</h5>
+            <h5>Doctor Potti, Jhalokathi</h5>
+            <h5>Contact: +880 1728253400</h5>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

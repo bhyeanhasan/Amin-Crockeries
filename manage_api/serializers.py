@@ -8,6 +8,13 @@ class ManageUserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['username', 'email', 'is_staff']
 
+
+class ManageProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+
 class ProductSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=100)
     unit_price = serializers.IntegerField()

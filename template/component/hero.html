@@ -5,11 +5,10 @@
     <div class="row">
         <div style="background-color: white" class="categorylist p-2 col-md-2">
             <ul class=" nav flex-column">
-
                 {% for category in categories %}
-                    <li class=" category nav-item">
-                        <a class="nav-link" href="{% url 'category' category.id %}">{{ category.name }}</a>
-                    </li>
+                <li class=" category nav-item">
+                    <a class="nav-link" href="{% url 'category' category.id %}">{{ category.name }}</a>
+                </li>
                 {% endfor %}
             </ul>
         </div>
@@ -59,7 +58,7 @@
                     <datalist id="datalistOptions">
                         {% for search in search_history %}
                         <option value="{{ search }}">
-                        {% endfor %}
+                            {% endfor %}
 
                     </datalist>
                     <button type="submit" class="btn searchbtn p-2"><i class="bi bi-search"></i> Search</button>

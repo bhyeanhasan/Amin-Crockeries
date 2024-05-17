@@ -1,6 +1,9 @@
 import reportlab.lib.colors
+from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from reportlab.pdfbase.pdfmetrics import stringWidth
 
 from .models import Wishlist, Cart, Order, OrderedItem
@@ -41,10 +44,27 @@ def orderConfirm(request):
         order.total_amount = total_amount
         order.save()
 
-        sendMail(request.user.email, "Order Placed",
-                 "Dear " + customer.name + "\n\n" +
-                 "Your order ID = " + str(order.id) + ", has been placed at " +
-                 str(order.placed_at) + "\nTotal amount = " + str(order.total_amount) + " BDT")
+        html_content = render_to_string('component/email.html', {
+            'name': customer.name,
+            'order_id': order.id,
+            'order_placed_at': order.placed_at,
+            'order_total_amount': order.total_amount
+        })
+
+        text_content = strip_tags(html_content)
+
+        send_mail(
+            subject="Order Confirmation",
+            message=text_content,
+            html_message=html_content,
+            from_email='oboyob16.official@gmail.com',
+            recipient_list=[request.user.email],
+        )
+
+        # sendMail(request.user.email, "Order Placed",
+        #          "Dear " + customer.name + "\n\n" +
+        #          "Your order ID = " + str(order.id) + ", has been placed at " +
+        #          str(order.placed_at) + "\nTotal amount = " + str(order.total_amount) + " BDT")
 
         carts = Cart.objects.filter(customer=customer)
         for cart in carts:
@@ -177,7 +197,7 @@ def download_voucher(request, id):
     p.setFillColorCMYK(0, 0, 0, 0.08)
     p.drawString((width / 2) - (text_width / 2), (height / 2) - 35, text)
 
-    p.setStrokeColorCMYK(0,0,0,0.08)
+    p.setStrokeColorCMYK(0, 0, 0, 0.08)
     p.ellipse((width / 2) - 180, (height / 2) - 70, (width / 2) + 180, (height / 2) + 70)
     p.ellipse((width / 2) - 182, (height / 2) - 71, (width / 2) + 182, (height / 2) + 71)
 

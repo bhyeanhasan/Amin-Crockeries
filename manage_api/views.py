@@ -1,6 +1,7 @@
 import io
 from manage_product.models import Product
-from manage_api.serializers import ProductSerializer, ProductDetailSerializer, ManageUserSerializer
+from manage_api.serializers import ProductSerializer, ProductDetailSerializer, ManageUserSerializer, \
+    ManageProductSerializer
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
@@ -11,6 +12,11 @@ from django.contrib.auth.models import User
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = ManageUserSerializer
+
+
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ManageProductSerializer
 
 
 @csrf_exempt

@@ -6,11 +6,15 @@ SECRET_KEY = '_4y)j0h475#t*gk*$pg#h4(8kpw)(j-h!i$r7vbt+lls+*3@r5'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['https://sandbox.aamarpay.com','https://*.127.0.0.1']
+
+
 INSTALLED_APPS = [
     'manage_user',
     'manage_product',
     'manage_api',
     'manage_order',
+    'manage_payment',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -24,7 +28,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',

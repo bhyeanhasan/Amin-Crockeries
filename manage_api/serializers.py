@@ -1,6 +1,22 @@
 from manage_product.models import Product
 from django.contrib.auth.models import User
 from rest_framework import serializers, viewsets
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+from manage_user.models import Customer
+
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        customer = Customer.objects.get(user=user)
+
+        # Add custom claims
+        token['username'] = user.username
+        token['name'] = customer.name
+
+        return token
 
 
 class ManageUserSerializer(serializers.ModelSerializer):

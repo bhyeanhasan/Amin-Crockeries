@@ -58,6 +58,7 @@ To set up the project locally, follow these steps:
     pip install djangorestframework
     pip install reportlab
     pip install Pillow
+    pip install djangorestframework-simplejwt
     ```
 
 4. Apply the migrations:

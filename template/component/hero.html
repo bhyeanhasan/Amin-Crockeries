@@ -1,30 +1,52 @@
 {% load static %}
 
 
-<div class="container mt-1 p-1">
-    <div class="row">
-        <div style="background-color: white" class="categorylist p-2 col-md-2">
-            <ul class=" nav flex-column">
-                {% for category in categories %}
-                <li class=" category nav-item">
-                    <a class="nav-link" href="{% url 'category' category.id %}">{{ category.name }}</a>
-                </li>
-                {% endfor %}
-            </ul>
+<div class="container  p-1">
+    <div class="row mx-2 mt-1">
+        <!--        <div style="background-color: white" class="categorylist p-2 mb-2 col-md-2 shadow">-->
+        <!--            <ul class="nav flex-column">-->
+        <!--                {% for category in categories %}-->
+        <!--                <li class=" category nav-item">-->
+        <!--                    <a class="nav-link" href="{% url 'category' category.id %}">{{ category.name }}</a>-->
+        <!--                </li>-->
+        <!--                {% endfor %}-->
+        <!--            </ul>-->
+        <!--        </div>-->
+
+        <div style="background-color: white" class="categorylist p-2 mb-2 col-md-2 shadow">
+            <!-- Collapse Button: Hidden on medium and larger screens -->
+            <button class="btn  d-md-none w-100" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#categoryCollapse" aria-expanded="false" aria-controls="categoryCollapse">
+                Categories
+            </button>
+
+            <!-- Collapsible List: Shown collapsed on mobile screens, expanded on larger screens -->
+            <div class="collapse d-md-block" id="categoryCollapse">
+                <ul class="nav flex-column">
+                    {% for category in categories %}
+                    <li class="category nav-item">
+                        <a class="nav-link" href="{% url 'category' category.id %}">{{ category.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-        <div class="col-md-10">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
+
+
+        <div class="col-md-10 mb-2">
+            <div id="carouselExampleControls" style="margin: 0;padding: 0" class="carousel slide"
+                 data-bs-ride="carousel">
+                <div class="carousel-inner shadow">
                     <div class="carousel-item active">
-                        <img style="border-radius: 10px" src="{% static 'images/one.jpg' %}" class="d-block w-100"
+                        <img class="d-block w-100 slide-img"  src="{% static 'images/one.jpg' %}"
                              alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img style="border-radius: 10px" src="{% static 'images/two.jpg' %}" class="d-block w-100"
+                        <img src="{% static 'images/two.jpg' %}" class="d-block w-100 slide-img "
                              alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img style="border-radius: 10px" src="{% static 'images/three.jpg' %}" class="d-block w-100"
+                        <img src="{% static 'images/three.jpg' %}" class="d-block w-100 slide-img "
                              alt="...">
                     </div>
                 </div>
@@ -44,7 +66,7 @@
 
     </div>
 
-    <div class="row searchdiv mt-2 d-flex align-items-center">
+    <div class="row searchdiv mx-2 my-2 d-flex align-items-center">
         <div class="col-md-3">
             <img class="search-logo" src="{% static 'images/logo.png' %}">
         </div>
@@ -74,8 +96,8 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
-            <img class="banner mx-auto rounded d-block my-2 px-1" src="{% static 'images/free.png' %}">
+        <div class="col-md-12 mx-2">
+            <img style="width: 100%" class="banner mx-auto rounded d-block my-2 " src="{% static 'images/free.png' %}">
         </div>
     </div>
 

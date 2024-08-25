@@ -22,7 +22,6 @@
 }
 
 .banner {
-    width: 95%;
 }
 
 
@@ -47,3 +46,10 @@
 .sorryimage{
     height: 300px;
 }
+
+.slide-img{
+    height: 200px;
+    width: 100%;
+}
+
+

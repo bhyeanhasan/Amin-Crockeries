@@ -1,4 +1,8 @@
 import io
+
+from django.contrib.sites import requests
+from rest_framework.views import APIView
+
 from manage_product.models import Product
 from manage_api.serializers import ProductSerializer, ProductDetailSerializer, ManageUserSerializer, \
     ManageProductSerializer
@@ -7,6 +11,11 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from rest_framework import viewsets
 from django.contrib.auth.models import User
+
+
+
+
+
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -71,3 +80,5 @@ def product_details(request, pk):
         profile = Product.objects.get(id=pk)
         serializer = ProductDetailSerializer(profile)
         return JsonResponse(serializer.data, safe=False)
+
+

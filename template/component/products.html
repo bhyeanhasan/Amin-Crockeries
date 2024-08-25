@@ -3,13 +3,13 @@
 
         {% for product in products %}
 
-            <div class="col-md-3 mb-3">
+            <div class="col-md-3 mb-3 px-4">
                 <div class="card">
 
                     <a href="{{ product.get_absolute_url }}"> <img src="{{ product.img.url }}"
                                                                    class="card-img-top product_img"
                                                                    alt="Product 1"></a>
-                    <div class="card-body">
+                    <div class="card-body px-3 py-2">
                         <h5 class="card-title" style="height: 25px;overflow: hidden">{{ product.name }}</h5>
                         <h5 class="card-text">{{ product.unit_price }} <strong>৳</strong></h5>
 

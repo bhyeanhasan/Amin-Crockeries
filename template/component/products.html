@@ -3,7 +3,7 @@
 
         {% for product in products %}
 
-            <div class="col-md-3 mb-3 px-4">
+            <div class="col-md-3 mb-3 px-2">
                 <div class="card">
 
                     <a href="{{ product.get_absolute_url }}"> <img src="{{ product.img.url }}"
@@ -11,18 +11,20 @@
                                                                    alt="Product 1"></a>
                     <div class="card-body px-3 py-2">
                         <h5 class="card-title" style="height: 25px;overflow: hidden">{{ product.name }}</h5>
-                        <h5 class="card-text">{{ product.unit_price }} <strong>৳</strong></h5>
+{#                        <h5 class="card-text">{{ product.unit_price }} <strong>৳</strong></h5>#}
 
-                        <i class=" bi bi-star"></i>
-                        <i class=" bi bi-star"></i>
-                        <i class=" bi bi-star"></i>
-                        <i class=" bi bi-star"></i>
+                        {#                        <i class=" bi bi-star"></i>#}
+                        {#                        <i class=" bi bi-star"></i>#}
+                        {#                        <i class=" bi bi-star"></i>#}
+                        {#                        <i class=" bi bi-star"></i>#}
 
+                        <span class="btn" style="float:left;">
+                        <h5 class="card-text price">{{ product.unit_price }} <strong>৳</strong></h5>
+                        </span>
                         <span class="btn" style="float:right;">
-                    <a href="{% url 'addToWishList' product.id %}" class="btn"><i class="bi bi-heart"></i> Fav</a>
-
-                    <a href="{% url 'addToCart' product.id %}" class="btn"><i class="bi bi-bag-plus"></i> Cart</a>
-                    </span>
+                        <a href="{% url 'addToWishList' product.id %}" class="btn"><i class="bi bi-heart"></i> Fav</a>
+                        <a href="{% url 'addToCart' product.id %}" class="btn"><i class="bi bi-bag-plus"></i> Cart</a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -38,7 +40,8 @@
 
             {% if products.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ products.previous_page_number }}"><i class="bi bi-arrow-left-circle"></i> Previous page</a>
+                    <a class="page-link" href="?page={{ products.previous_page_number }}"><i
+                            class="bi bi-arrow-left-circle"></i> Previous page</a>
                 </li>
             {% endif %}
 
@@ -49,7 +52,8 @@
 
             {% if products.has_next %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ products.next_page_number }}"> Next page <i class="bi bi-arrow-right-circle"></i></a>
+                    <a class="page-link" href="?page={{ products.next_page_number }}"> Next page <i
+                            class="bi bi-arrow-right-circle"></i></a>
                 </li>
             {% endif %}
 

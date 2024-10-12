@@ -18,25 +18,25 @@
                     </a>
                 </div>
 
-                <div class="col-md-12 mt-5 mt-md-0 text-center my-5">
-                    <h4 class="mb-4">Our Products</h4>
-
-                    <div class="container">
-
-                        <div class="row">
-
-                            {% for category in categories %}
-
-                            <div class="col-md-2">
-                                <a class="nav-link" href="{% url 'category' category.id %}">{{ category.name }}</a>
-
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-
-
-                </div>
+{#                <div class="col-md-12 mt-5 mt-md-0 text-center my-5">#}
+{#                    <h4 class="mb-4">Our Products</h4>#}
+{##}
+{#                    <div class="container">#}
+{##}
+{#                        <div class="row">#}
+{##}
+{#                            {% for category in categories %}#}
+{##}
+{#                            <div class="col-md-2">#}
+{#                                <a class="nav-link" href="{% url 'category' category.id %}">{{ category.name }}</a>#}
+{##}
+{#                            </div>#}
+{#                            {% endfor %}#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{##}
+{#                </div>#}
 
 
                 <div class="col-6 col-md-4 mt-5 mt-md-0 text-center">
@@ -66,11 +66,11 @@
                         <h5 class="mb-4">About US</h5>
 
 
-                        <a class="text-black" url="/about/#vision">
-                            <h6> Our Vision</h6>
+                        <a url="/terms&conditions">
+                            <h6>Our Vision</h6>
                         </a>
-                        <a class="text-black" url="/about/#culture">
-                            <h6> Culture</h6>
+                        <a url="/privacy-policy">
+                            <h6>Culture</h6>
                         </a>
 
 
@@ -81,6 +81,8 @@
             </div>
         </div>
     </footer>
+
+
     <footer class="bottom-footer primary-background mb-2">
         <div class="container-fluid">
             <div class="row">
@@ -109,11 +111,5 @@
 
             </div>
         </div>
-
-
-</div>
-</div>
-</footer>
-
-
+    </footer>
 </div>

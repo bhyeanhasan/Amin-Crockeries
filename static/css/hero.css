@@ -48,8 +48,11 @@
 }
 
 .slide-img{
-    height: 200px;
+    height: 400px;
     width: 100%;
 }
 
-
+.price{
+    color: #f67c01;
+    font-weight: bold;
+}

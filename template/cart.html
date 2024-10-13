@@ -1,52 +1,56 @@
-{% extends 'component/base_profile.html'%}
+{% extends 'component/base_profile.html' %}
 {% load static %}
 
 {% block details %}
 
-<div class="col-md-9">
-    <div class="card p-3">
-        <div class="mb-2" style="text-align: right">
-            <a href="{% url 'orderConfirm' %}" class="btn btn-warning">PROCEED TO CHECKOUT</a>
-        </div>
-
-
-        {%for cart in cartitems%}
-        <div class="card mb-2">
-            <div class="card-body">
-                <div class="row">
-
-                    <div class="col-md-2">
-                        <img style="width: 100px;height: 100px" src="{{cart.product.img.url}}">
-                    </div>
-
-                    <div style="text-align: left" class="col-md-7">
-                        <h5 style="overflow: hidden;height: 30px">
-                            <a style="text-decoration: none;color: #0E674D" href="{{cart.product.get_absolute_url}}">
-                                {{cart.product.name}}</a>
-                        </h5>
-                        <p style="word-wrap: break-word;word-break: break-word;height: 70px;overflow: hidden">
-                            {{cart.product.description}}</p>
-                    </div>
-
-                    <div style="text-align: left" class="col-md-3">
-                        <h2>৳ {{cart.product.unit_price}} * {{cart.quantity}}</h2>
-                        <div style="margin-top: 30px"></div>
-                        <span style="margin-right: 30px">
-                        <a style="color: green" href="{% url 'addToCart' cart.product.id %}"><i
-                                class="bi bi-bag-check-fill"></i></a>
-                    </span>
-                        <span>
-                        <a style="color: red" href="{% url 'deleteCartItem' cart.id %}"><i
-                                class="bi bi-trash3-fill"></i></a>
-                    </span>
-                    </div>
-
-                </div>
+    <div class="col-md-9">
+        <div class="card p-3">
+            <div class="mb-2" style="text-align: right">
+                <a href="{% url 'orderConfirm' %}" class="btn btn-warning">PROCEED TO CHECKOUT</a>
             </div>
-        </div>
-        {%endfor%}
 
+
+            {% for cart in cartitems %}
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-md-2">
+                                <img style="width: 100px;height: 100px" src="{{ cart.product.img.url }}">
+                            </div>
+
+                            <div style="text-align: left" class="col-md-7">
+                                <h5 style="overflow: hidden;height: 30px">
+                                    <a style="text-decoration: none;color: #0E674D"
+                                       href="{{ cart.product.get_absolute_url }}">
+                                        {{ cart.product.name }}</a>
+                                </h5>
+                                <p style="word-wrap: break-word;word-break: break-word;height: 70px;overflow: hidden">
+                                    {{ cart.product.description }}</p>
+                            </div>
+
+                            <div style="text-align: left" class="col-md-3">
+                                <h2>৳ {{ cart.product.unit_price }} * {{ cart.quantity }}</h2>
+                                <div style="margin-top: 30px;text-align: center">
+
+                                <span style="margin-right: 20px">
+                        <a style="color: green" href="{% url 'addToCart' cart.product.id %}"> <i
+                                style="font-size: 2rem;" class="bi bi-plus-square-fill"></i></a>
+                    </span>
+                                <span>
+                        <a style="color: red" href="{% url 'deleteCartItem' cart.id %}"> <i style="font-size: 2rem;"
+                                                                                            class="bi bi-dash-square-fill"></i></a>
+                    </span>
+
+                                    </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
     </div>
-</div>
 
 {% endblock %}

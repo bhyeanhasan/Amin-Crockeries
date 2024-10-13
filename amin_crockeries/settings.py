@@ -145,7 +145,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'oboyob16.official@gmail.com'
-EMAIL_HOST_PASSWORD = 'zcmbhzjiiqufxyeg'
+EMAIL_HOST_PASSWORD = 'yvxn jpow zdpr nyky'
 EMAIL_USE_TLS = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

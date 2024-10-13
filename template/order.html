@@ -7,18 +7,18 @@
 
     {%for order in orders%}
 
-    <div style="text-align: left" class="mb-3">
+    <div style="text-align: left" class="mb-4">
         <div class="card">
             <div style="background-color: #acbdbd" class="card-body">
                 <div class="row">
                     <div class="col-md-6">
                         STATUS : {{order.status}}<br>
 
-                        TOTAL AMOUNT: {{order.total_amount}}
+                        Total Amount: <i class="bi bi-wallet2"></i>  {{order.total_amount}}
                     </div>
                     <div style="text-align: right" class="col-md-6">
                         <a href="{%url 'orderDetails' order.id%}">ORDER ID: {{order.id}}</a><br>
-                        PLACE TIME: {{order.placed_at}}
+                        Order Time: <i class="bi bi-alarm-fill"></i> {{order.placed_at}}
                     </div>
 
                 </div>

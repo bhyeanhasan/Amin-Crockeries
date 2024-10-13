@@ -1,55 +1,61 @@
-{% extends 'component/base.html'%}
+{% extends 'component/base.html' %}
 {% load static %}
 
 
 {% block content %}
 
-<section class="container main">
-    <div class="row ">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-8">
-            <div class="wrapper">
-                <div class="formContent">
-                    <div class="my-2">
-                        {% for message in messages %}
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <h6> {{message}} </h6>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <section class="container main">
+        <div class="row ">
+            <div class="col-md-3">
+            </div>
+
+            <div class="col-md-6 mt-5">
+                <div class="wrapper mt-5">
+                    <div class="formContent">
+
+                        <div class="my-5">
+                            {% for message in messages %}
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <h6> {{ message }} </h6>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
+
+                        <form class="forms px-5" action="login" method="post">
+                            <h4>Welcome to Amin Crockeries! Please login.</h4>
+
+                            {% csrf_token %}
+
+                            <input type="text" name="username" class="form-control mt-3" placeholder="Username"
+                                   required>
+
+
+                            <input type="password" name="password" class="form-control mt-3" placeholder="Password"
+                                   required>
+
+
+                            <button type="submit" class="btn btn-primary mt-3">Log in</button>
+
+                        </form>
+
+                        <div style="text-align: right">
+                            <a href="{% url 'forgetPassword' %}">Forgot Password?</a>
+                        </div>
+
+
                     </div>
-
-                    <form class="forms" action="login" method="post">
-                        {% csrf_token %}
-
-                        <input type="text" name="username" class="form-control mt-3" placeholder="Username" required>
-
-
-                        <input type="password" name="password" class="form-control mt-3" placeholder="Password"
-                               required>
-
-
-                        <button type="submit" class="btn btn-primary mt-3">Log in</button>
-
-                    </form>
-
-                    <div style="text-align: right">
-                        <a href="{%url 'forgetPassword'%}">Forgot Password?</a>
-                    </div>
-
-
                 </div>
+
+            </div>
+
+
+            <div class="col-md-2">
+
             </div>
 
         </div>
-
-
-        <div class="col-md-2">
-
-        </div>
-
-    </div>
-</section>
+    </section>
 
 {% endblock %}

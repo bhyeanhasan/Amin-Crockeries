@@ -152,3 +152,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 LOGIN_REDIRECT_URL = '/manage_user/login'
 LOGIN_URL = '/manage_user/login'
+
+# Stripe API Keys (Replace with your actual keys)
+STRIPE_PUBLISHABLE_KEY = 'your_publishable_key_placeholder'
+STRIPE_SECRET_KEY = 'your_secret_key_placeholder'
+STRIPE_WEBHOOK_SECRET = 'your_stripe_webhook_secret_placeholder' # Replace with your actual Stripe webhook secret

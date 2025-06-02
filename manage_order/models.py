@@ -29,6 +29,8 @@ class Order(models.Model):
     placed_at = models.DateTimeField(default=datetime.now())
     payment_status = models.CharField(max_length=50, default="Pending")
     status = models.CharField(max_length=500, default="Placed")
+    payment_method = models.CharField(max_length=50, blank=True, null=True)
+    transaction_id = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return "Amount : " + str(self.total_amount) + " // Placed at: " + str(self.placed_at.date())

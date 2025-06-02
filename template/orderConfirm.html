@@ -1,6 +1,10 @@
 {% extends 'component/base_profile.html'%}
 {% load static %}
 
+{% block head_extra %}
+<script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
 {% block details %}
 
 <div class="col-md-9">
@@ -12,6 +16,10 @@
 
     <form method="post" action="{% url 'orderConfirm'%}">
         {% csrf_token %}
+
+        {# Assuming order.id is available in the context, if not, this needs to be passed from the view #}
+        {# For example, if the view passes an 'order' object which is the newly created Order instance #}
+        <input type="hidden" id="order-id" value="{{ order.id }}">
 
         <div class="row mb-2">
             <div class="col-sm-4">
@@ -115,12 +123,101 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-warning">Cash On Delivery</button>
-        <button type="submit" class="btn btn-warning">Pay Now</button>
+        <button type="submit" name="payment_method" value="cod" class="btn btn-warning">Cash On Delivery</button>
+        {# Assuming the form submission to 'orderConfirm' view will handle 'payment_method' value for AmarPay #}
+        <button type="submit" name="payment_method" value="amarpay" class="btn btn-info">Pay with AmarPay</button>
+        <button type="button" id="stripe-pay-button" class="btn btn-primary">Pay with Card (Stripe)</button>
 
     </form>
-
-
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const stripePayButton = document.getElementById('stripe-pay-button');
+    const orderIdElement = document.getElementById('order-id');
+
+    if (stripePayButton && orderIdElement) {
+        const orderId = orderIdElement.value;
+
+        if (!orderId) {
+            console.error("Order ID is missing from the hidden input. Ensure {{ order.id }} is correctly passed to the template.");
+            alert("Cannot initiate payment: Order ID is missing.");
+            return;
+        }
+
+        stripePayButton.addEventListener('click', function() {
+            // Fetch Stripe publishable key
+            fetch("{% url 'stripe_config' %}")
+            .then(function(response) {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok for stripe_config');
+                }
+                return response.json();
+            })
+            .then(function(config) {
+                if (!config.publishableKey) {
+                    console.error('Publishable key not found in config:', config);
+                    alert('Payment system configuration error. Publishable key missing.');
+                    throw new Error('Publishable key missing');
+                }
+                const stripe = Stripe(config.publishableKey);
+
+                // Fetch checkout session ID from your backend
+                // Using template literal for URL for clarity, though Django's {% url %} is safer for dynamic parts if needed elsewhere.
+                fetch(`/payment/stripe/checkout-session/${orderId}/`, {
+                    method: 'POST', // Changed to POST as per common practice for creating resources
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}', // Ensure CSRF token is available
+                        'Content-Type': 'application/json'
+                    },
+                    // body: JSON.stringify({}) // No body needed if order_id is in URL and view expects POST
+                })
+                .then(function(response) {
+                    if (!response.ok) {
+                        response.json().then(data => {
+                            console.error('Error fetching checkout session:', data);
+                            alert('Error setting up payment. ' + (data.message || 'Server error.'));
+                        }).catch(() => {
+                            alert('Error setting up payment. Could not parse error response from server.');
+                        });
+                        throw new Error('Failed to fetch checkout session, status: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(function(session) {
+                    if (session.sessionId) {
+                        return stripe.redirectToCheckout({ sessionId: session.sessionId });
+                    } else {
+                        console.error('Invalid session ID received:', session);
+                        alert('Could not initiate payment. Invalid session data received from server.');
+                        throw new Error('Invalid session ID');
+                    }
+                })
+                .then(function(result) {
+                    // If `redirectToCheckout` fails due to a browser issue, or CVC declined etc.
+                    // `result.error.message` will be displayed to the user by Stripe.
+                    if (result && result.error) {
+                        alert(result.error.message);
+                    }
+                    // Note: successful redirection means this part might not be reached if the page unloads.
+                    // Error handling here is mostly for client-side validation errors by Stripe.js before redirect.
+                })
+                .catch(function(error) {
+                    console.error('Error during Stripe checkout:', error);
+                    // Avoid showing generic 'error' object to user, provide a user-friendly message.
+                    alert('An error occurred during the payment process. Please try again or contact support if the issue persists.');
+                });
+            })
+            .catch(function(error) {
+                console.error('Error fetching Stripe config:', error);
+                alert('Could not load payment configuration. Please check your internet connection or try again later.');
+            });
+        });
+    } else {
+        if (!stripePayButton) console.error("Stripe pay button (id='stripe-pay-button') not found.");
+        if (!orderIdElement) console.error("Order ID element (id='order-id') not found. Make sure {{ order.id }} is available in the template context and the input field is present.");
+    }
+});
+</script>
 
 {% endblock %}
